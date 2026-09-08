@@ -9,7 +9,7 @@ function Nav({ setNavClick, navClick }: NavProps) {
 
     
   return (
-    <div>
+    
       <nav className="sticky top-0 z-50 border-b border-gray-200 bg-white/90 backdrop-blur-md">
         <div className="mx-auto flex h-16 max-w-310 items-center justify-between px-4">
           {/* Logo */}
@@ -89,7 +89,6 @@ function Nav({ setNavClick, navClick }: NavProps) {
           </div>
         </div>
       </nav>
-    </div>
   );
 }
 

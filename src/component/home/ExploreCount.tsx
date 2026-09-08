@@ -8,16 +8,14 @@ interface ExploreCountProps {
 
 export default function ExploreCount({data} : ExploreCountProps) {
     
-    const continents = [
-  ...new Set(data.flatMap(country => country.continents.continents))
-];
+    const continents = [...new Set(data.flatMap(country => country.continents.continents))];
 
 
 
         
   return (
-    <div>
-      <section className="mt-5 grid grid-cols-2 gap-3 lg:grid-cols-4">
+    
+      <section className="mt-5 grid grid-cols-2 gap-3 lg:grid-cols-4 container mx-auto px-4 sm:px-6 lg:px-20">
         {/* Total Countries */}
         <div className="flex items-center gap-4 rounded-2xl border border-gray-100 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-md">
           <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-2xl">
@@ -66,6 +64,5 @@ export default function ExploreCount({data} : ExploreCountProps) {
           </div>
         </div>
       </section>
-    </div>
   );
 }

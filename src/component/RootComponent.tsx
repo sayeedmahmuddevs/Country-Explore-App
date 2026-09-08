@@ -11,10 +11,11 @@ interface RootComponentProps {
 }
 
 function RootComponent({ data }: RootComponentProps) {
+  // fetching Data
   const datas = use(data);
   const [allCountry] = useState(datas.map((country) => ({...country, isVisited: false})));
     
-
+// Nav Click
   type NavClick = "home" | "countries" | "visited countries";
 
   const [navClick, setNavClick] = useState<NavClick>("home");
@@ -24,19 +25,15 @@ function RootComponent({ data }: RootComponentProps) {
   };
 
   return (
-    <>
-      <Nav
-        setNavClick={handleNavClick}
-        navClick={navClick}
-      />
+    <section>
 
-      {navClick === "home" && <HomeMain allCountries={allCountry} />}
-
+      <Nav setNavClick={handleNavClick} navClick={navClick} />
+      {navClick === "home" && <HomeMain allCountries={allCountry} setNavClick = {setNavClick} navClick = {navClick} />}
       {navClick === "countries" &&  <CountriesMain />}
-
       {navClick === "visited countries" &&  <VisitedCountriesMain />
       }
-    </>
+
+    </section>
   );
 }
 
