@@ -1,26 +1,27 @@
-import { useState } from "react"
-import CountriesMain from "./component/Countries/Countries-main"
-import HomeMain from "./component/home/Home-main"
-import VisitedCountriesMain from "./component/Visited-Coutries/Visited-Countries-Main"
-import Nav from "./component/Nav"
+import { Suspense, useState } from "react"
+import type { Type } from "./Type"
+import RootComponent from "./component/RootComponent";
+
+
 
 function App() {
-  // navtype
-  type NavClick = "home" | "countries" | "visited countries";
 
-  // navChange click
-  const [navClick, setNavClick] = useState<NavClick>("home")
-
-  const handleNavClick = (nav: NavClick) => {
-    setNavClick(nav)
+  const data = async() : Promise<Type[]> => {
+    const res = await fetch('Data.json')
+    const data = await res.json();
+    return data.countries
   }
+
+  const [datas] = useState(()=> data())
+  
+    
 
   return (
     <>
-      <Nav setNavClick={handleNavClick} navClick={navClick}></Nav>
-      {navClick === "home" && <HomeMain></HomeMain>}
-      {navClick === "countries" && <CountriesMain></CountriesMain>}
-      {navClick === "visited countries" && <VisitedCountriesMain></VisitedCountriesMain>}
+    <Suspense fallback={<div>Loading...</div>}> 
+      <RootComponent data = {datas} ></RootComponent>
+    </Suspense>
+      
     </>
   )
 }

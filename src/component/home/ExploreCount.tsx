@@ -1,4 +1,20 @@
-export default function ExploreCount() {
+import type { Type } from "../../Type";
+
+interface ExploreCountProps {  
+    data: Type[];
+}
+
+
+
+export default function ExploreCount({data} : ExploreCountProps) {
+    
+    const continents = [
+  ...new Set(data.flatMap(country => country.continents.continents))
+];
+
+
+
+        
   return (
     <div>
       <section className="mt-5 grid grid-cols-2 gap-3 lg:grid-cols-4">
@@ -9,7 +25,7 @@ export default function ExploreCount() {
           </div>
 
           <div>
-            <p className="text-2xl font-bold text-gray-800">250</p>
+            <p className="text-2xl font-bold text-gray-800">{data.length}</p>
             <p className="text-sm text-gray-400">Countries</p>
           </div>
         </div>
@@ -33,7 +49,7 @@ export default function ExploreCount() {
           </div>
 
           <div>
-            <p className="text-2xl font-bold text-gray-800">7</p>
+            <p className="text-2xl font-bold text-gray-800">{continents.length}</p>
             <p className="text-sm text-gray-400">Continents</p>
           </div>
         </div>
