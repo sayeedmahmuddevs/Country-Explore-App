@@ -1,6 +1,13 @@
 
 
-export default function FilteringCountries() {
+type continentsfilter = "all" | "Asia" | "Europe" | "Africa" | "North America" | "South Americas" | "Oceania" | "Antarctica";
+interface FilteringCountriesProps {
+  
+  selectedFilter: string;
+  setSelectedFilter: React.Dispatch<React.SetStateAction<continentsfilter>>;
+}
+
+export default function FilteringCountries({ selectedFilter, setSelectedFilter }: FilteringCountriesProps) {
   return (
     <section className="mt-6 rounded-2xl border border-gray-100 bg-white p-4 shadow-sm">
       {/* Top Row */}
@@ -28,17 +35,22 @@ export default function FilteringCountries() {
           </label>
 
           <select
+            value={selectedFilter}
+            onChange={(e) => setSelectedFilter(e.target.value as continentsfilter)}
+
             className="w-full rounded-xl border border-gray-200 bg-gray-50
                    px-3 py-2.5 text-sm text-gray-600 outline-none
                    transition focus:border-green-400 focus:ring-2
                    focus:ring-green-100"
           >
-            <option>All Regions</option>
-            <option>Africa</option>
-            <option>Americas</option>
-            <option>Asia</option>
-            <option>Europe</option>
-            <option>Oceania</option>
+            <option value = "all">All Regions</option>
+            <option value = "Africa">Africa</option>
+            <option value = "Asia">Asia</option>
+            <option value = "South America">South America</option>
+            <option value = "North America">North America</option>
+            <option value = "Europe">Europe</option>
+            <option value = "Oceania">Oceania</option>
+            <option value = "Antarctica">Antarctica</option>
           </select>
         </div>
 

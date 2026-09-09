@@ -1,44 +1,35 @@
-import { FaRegHeart, FaArrowRight } from "react-icons/fa6";
 import type { Type } from "../../Type";
 
-interface CardProps {
-  data: Type;
-}
-
-function Card({ data }: CardProps) {
+function Countries({ country }: { country: Type }) {
   const buttonUi: { [key: string]: string } = {
-    Asia: "bg-amber-100 text-amber-500",
-    Europe: "bg-blue-100 text-blue-500",
-    Africa: "bg-green-100 text-green-500",
-    "North America": "bg-yellow-100 text-yellow-500",
-    "South Americas": "bg-red-100 text-red-500",
-    Oceania: "bg-purple-100 text-purple-500",
-    Antarctica: "bg-cyan-100 text-cyan-500",
+        Asia: "bg-amber-100 text-amber-500",
+        Europe: "bg-blue-100 text-blue-500",
+        Africa: "bg-green-100 text-green-500",
+        "North America": "bg-yellow-100 text-yellow-500",
+        "South Americas": "bg-red-100 text-red-500",
+        Oceania: "bg-purple-100 text-purple-500",
+        Antarctica: "bg-gray-100 text-gray-500",
   };
-
   return (
     <div className="group rounded-2xl border border-gray-100 bg-white p-5 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg">
       <div className="mb-4 flex h-20 justify-between rounded-xl text-2xl transition ">
         <img
-          src={data.flags.flags.png}
+          src={country.flags.flags.png}
           alt=""
           className="max-w-40 group-hover:scale-110 transition-transform duration-200 rounded-xl border"
         />
-        <span className="inline-block hover:text-red-500">
-          <FaRegHeart />
-        </span>
       </div>
 
       <h3 className="font-bold text-gray-800 text-xl mb-1">
-        {data.name.common}
+        {country.name.common}
       </h3>
       <h6 className="text-sm font-semibold text-gray-400 mb-3">
-        {data.capital.capital}
+        {country.capital.capital}
       </h6>
       <span
-        className={`p-1 rounded-xl font-mono text-sm ${buttonUi[data.continents.continents[0]]} `}
+        className={`p-1 rounded-xl font-mono text-sm ${buttonUi[country.continents.continents[0]]} `}
       >
-        {data.continents.continents}
+        {country.continents.continents}
       </span>
 
       <button className=" block w-full py-2 rounded-lg mt-4 text-sm font-semibold text-blue-500 border hover:text-blue-600">
@@ -48,4 +39,4 @@ function Card({ data }: CardProps) {
   );
 }
 
-export default Card;
+export default Countries;

@@ -34,7 +34,7 @@ function Nav({ setNavClick, navClick }: NavProps) {
             <a
               href="#"
               onClick={() => setNavClick("home")}
-              className= {`rounded-lg  px-4 py-2 text-sm font-semibold hover:bg-gray-100 hover:text-green-600   ${navClick === "home"? "text-green-600 bg-green-50" : "" }`}
+              className= {`rounded-lg  px-4 py-2 text-sm font-semibold hover:bg-blue-100 hover:text-blue-600   ${navClick === "home"? "text-blue-600 bg-blue-50" : "" }`}
             >
               Home
             </a>
@@ -42,7 +42,7 @@ function Nav({ setNavClick, navClick }: NavProps) {
             <a
               href="#"
               onClick={() => setNavClick("countries")}
-              className={`rounded-lg  px-4 py-2 text-sm font-semibold  hover:bg-gray-100 hover:text-green-600  ${navClick === "countries"? "text-green-600 bg-green-50" : "" }`}
+              className={`rounded-lg  px-4 py-2 text-sm font-semibold  hover:bg-blue-100 hover:text-blue-600  ${navClick === "countries"? "text-blue-600 bg-blue-50" : "" }`}
             >
               Countries
             </a>
@@ -50,7 +50,7 @@ function Nav({ setNavClick, navClick }: NavProps) {
             <a
               href="#"
               onClick={() => setNavClick("visited countries")}
-              className = {`rounded-lg  px-4 py-2 text-sm font-semibold  hover:bg-gray-100 hover:text-green-600  ${navClick === "visited countries"? "text-green-600 bg-green-50" : "" }`}
+              className = {`rounded-lg  px-4 py-2 text-sm font-semibold  hover:bg-blue-100 hover:text-blue-600  ${navClick === "visited countries"? "text-blue-600 bg-blue-50" : "" }`}
             >
               Visited Countries
             </a>

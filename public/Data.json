@@ -4,6 +4,111 @@
   "countries": [
     {
       "name": {
+        "common": "Bangladesh",
+        "official": "People's Republic of Bangladesh"
+      },
+      "ccn3": {
+        "ccn3": "050"
+      },
+      "currencies": {
+        "currencies": {
+          "BDT": {
+            "name": "Bangladeshi taka",
+            "symbol": "৳"
+          }
+        }
+      },
+      "capital": {
+        "capital": [
+          "Dhaka"
+        ]
+      },
+      "region": {
+        "region": "Asia"
+      },
+      "languages": {
+        "languages": {
+          "ben": "Bengali"
+        }
+      },
+      "area": {
+        "area": 147570
+      },
+      "cca3": {
+        "cca3": "BGD"
+      },
+      "population": {
+        "population": 164689383
+      },
+      "continents": {
+        "continents": [
+          "Asia"
+        ]
+      },
+      "flags": {
+        "flags": {
+          "png": "https://flagcdn.com/w320/bd.png",
+          "svg": "https://flagcdn.com/bd.svg",
+          "alt": "The flag of Bangladesh has a dark green field bearing a large red circle that is offset slightly towards the hoist side of center."
+        }
+      }
+    },
+    {
+      "name": {
+        "common": "Switzerland",
+        "official": "Swiss Confederation"
+      },
+      "ccn3": {
+        "ccn3": "756"
+      },
+      "currencies": {
+        "currencies": {
+          "CHF": {
+            "name": "Swiss franc",
+            "symbol": "Fr."
+          }
+        }
+      },
+      "capital": {
+        "capital": [
+          "Bern"
+        ]
+      },
+      "region": {
+        "region": "Europe"
+      },
+      "languages": {
+        "languages": {
+          "fra": "French",
+          "gsw": "Swiss German",
+          "ita": "Italian",
+          "roh": "Romansh"
+        }
+      },
+      "area": {
+        "area": 41284
+      },
+      "cca3": {
+        "cca3": "CHE"
+      },
+      "population": {
+        "population": 8654622
+      },
+      "continents": {
+        "continents": [
+          "Europe"
+        ]
+      },
+      "flags": {
+        "flags": {
+          "png": "https://flagcdn.com/w320/ch.png",
+          "svg": "https://flagcdn.com/ch.svg",
+          "alt": "The flag of Switzerland is square shaped. It features a white Swiss cross centered on a red field."
+        }
+      }
+    },
+    {
+      "name": {
         "common": "Jamaica",
         "official": "Jamaica"
       },
@@ -2242,57 +2347,6 @@
           "png": "https://flagcdn.com/w320/am.png",
           "svg": "https://flagcdn.com/am.svg",
           "alt": "The flag of Armenia is composed of three equal horizontal bands of red, blue and orange."
-        }
-      }
-    },
-    {
-      "name": {
-        "common": "Bangladesh",
-        "official": "People's Republic of Bangladesh"
-      },
-      "ccn3": {
-        "ccn3": "050"
-      },
-      "currencies": {
-        "currencies": {
-          "BDT": {
-            "name": "Bangladeshi taka",
-            "symbol": "৳"
-          }
-        }
-      },
-      "capital": {
-        "capital": [
-          "Dhaka"
-        ]
-      },
-      "region": {
-        "region": "Asia"
-      },
-      "languages": {
-        "languages": {
-          "ben": "Bengali"
-        }
-      },
-      "area": {
-        "area": 147570
-      },
-      "cca3": {
-        "cca3": "BGD"
-      },
-      "population": {
-        "population": 164689383
-      },
-      "continents": {
-        "continents": [
-          "Asia"
-        ]
-      },
-      "flags": {
-        "flags": {
-          "png": "https://flagcdn.com/w320/bd.png",
-          "svg": "https://flagcdn.com/bd.svg",
-          "alt": "The flag of Bangladesh has a dark green field bearing a large red circle that is offset slightly towards the hoist side of center."
         }
       }
     },
@@ -9421,60 +9475,6 @@
           "png": "https://flagcdn.com/w320/st.png",
           "svg": "https://flagcdn.com/st.svg",
           "alt": "The flag of South Sudan is composed of three equal horizontal bands of black, red with white top and bottom edges, and green. A blue equilateral triangle which spans about two-fifth the width of the field is superimposed on the hoist side with its base on the hoist end of the field. At the center of this triangle is a five-pointed yellow star."
-        }
-      }
-    },
-    {
-      "name": {
-        "common": "Switzerland",
-        "official": "Swiss Confederation"
-      },
-      "ccn3": {
-        "ccn3": "756"
-      },
-      "currencies": {
-        "currencies": {
-          "CHF": {
-            "name": "Swiss franc",
-            "symbol": "Fr."
-          }
-        }
-      },
-      "capital": {
-        "capital": [
-          "Bern"
-        ]
-      },
-      "region": {
-        "region": "Europe"
-      },
-      "languages": {
-        "languages": {
-          "fra": "French",
-          "gsw": "Swiss German",
-          "ita": "Italian",
-          "roh": "Romansh"
-        }
-      },
-      "area": {
-        "area": 41284
-      },
-      "cca3": {
-        "cca3": "CHE"
-      },
-      "population": {
-        "population": 8654622
-      },
-      "continents": {
-        "continents": [
-          "Europe"
-        ]
-      },
-      "flags": {
-        "flags": {
-          "png": "https://flagcdn.com/w320/ch.png",
-          "svg": "https://flagcdn.com/ch.svg",
-          "alt": "The flag of Switzerland is square shaped. It features a white Swiss cross centered on a red field."
         }
       }
     },
