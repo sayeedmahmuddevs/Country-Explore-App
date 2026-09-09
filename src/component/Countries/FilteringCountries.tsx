@@ -1,13 +1,21 @@
 
 
-type continentsfilter = "all" | "Asia" | "Europe" | "Africa" | "North America" | "South Americas" | "Oceania" | "Antarctica";
+type continentsfilters = "all" | "Asia" | "Europe" | "Africa" | "North America" | "South Americas" | "Oceania" | "Antarctica";
+type populationfilter = "all" | "under 1 million" | "under 10 million" | "under 100 million" | "more than 100 million";  
+
 interface FilteringCountriesProps {
   
-  selectedFilter: string;
-  setSelectedFilter: React.Dispatch<React.SetStateAction<continentsfilter>>;
+  continentFilter: string;
+  setSelectedFilter: React.Dispatch<React.SetStateAction<continentsfilters>>;
+  populationFilter: string;
+  setPopulationFilter: React.Dispatch<React.SetStateAction<populationfilter>>;
+  peopleFilter: number;
 }
 
-export default function FilteringCountries({ selectedFilter, setSelectedFilter }: FilteringCountriesProps) {
+export default function FilteringCountries({ continentFilter, setSelectedFilter, populationFilter, setPopulationFilter, peopleFilter }
+
+  : FilteringCountriesProps) {
+
   return (
     <section className="mt-6 rounded-2xl border border-gray-100 bg-white p-4 shadow-sm">
       {/* Top Row */}
@@ -21,7 +29,7 @@ export default function FilteringCountries({ selectedFilter, setSelectedFilter }
         </div>
 
         <p className="text-sm text-gray-500">
-          Showing <span className="font-bold text-green-500">195</span>{" "}
+          Showing <span className="font-bold text-green-500">{peopleFilter}</span>{" "}
           countries
         </p>
       </div>
@@ -35,8 +43,8 @@ export default function FilteringCountries({ selectedFilter, setSelectedFilter }
           </label>
 
           <select
-            value={selectedFilter}
-            onChange={(e) => setSelectedFilter(e.target.value as continentsfilter)}
+            value={continentFilter}
+            onChange={(e) => setSelectedFilter(e.target.value as continentsfilters)}
 
             className="w-full rounded-xl border border-gray-200 bg-gray-50
                    px-3 py-2.5 text-sm text-gray-600 outline-none
@@ -61,16 +69,18 @@ export default function FilteringCountries({ selectedFilter, setSelectedFilter }
           </label>
 
           <select
+            value={populationFilter}
+            onChange={(e) => setPopulationFilter(e.target.value as populationfilter)}
             className="w-full rounded-xl border border-gray-200 bg-gray-50
                    px-3 py-2.5 text-sm text-gray-600 outline-none
                    transition focus:border-green-400 focus:ring-2
                    focus:ring-green-100"
           >
-            <option>Any Population</option>
-            <option>Under 1M</option>
-            <option>1M - 10M</option>
-            <option>10M - 100M</option>
-            <option>100M+</option>
+            <option value="all">Any Population</option>
+            <option value="under 1 million">Under 1M</option>
+            <option value="under 10 million">1M - 10M</option>
+            <option value="under 100 million">10M - 100M</option>
+            <option value="more than 100 million">100M+</option>
           </select>
         </div>
 
@@ -107,10 +117,11 @@ export default function FilteringCountries({ selectedFilter, setSelectedFilter }
                    transition focus:border-green-400 focus:ring-2
                    focus:ring-green-100"
           >
-            <option>Name: A → Z</option>
-            <option>Name: Z → A</option>
-            <option>Population: High → Low</option>
-            <option>Population: Low → High</option>
+            <option value="all">Any Sort</option>
+            <option value ="A-Z">Name: A → Z</option>
+            <option value = "Z-A">Name: Z → A</option>
+            <option value = "high to low">Population: High → Low</option>
+            <option value = "low to high">Population: Low → High</option>
           </select>
         </div>
       </div>
