@@ -15,6 +15,8 @@ function RootComponent({ data }: RootComponentProps) {
   // fetching Data
   const datas = use(data);
   const [allCountry] = useState(datas.map((country) => ({...country, isVisited: false})));
+
+  const [searchCountry, setSearchCountry] = useState<string>("");
     
 // Nav Click
   type NavClick = "home" | "countries" | "visited countries";
@@ -31,10 +33,10 @@ function RootComponent({ data }: RootComponentProps) {
     <section>
 
       <Nav setNavClick={handleNavClick} navClick={navClick} />
-      {navClick === "home" && <HomeMain allCountries={allCountry} setNavClick = {setNavClick} navClick = {navClick} />}
-      {navClick === "countries" &&  <CountriesMain countries={allCountry}/>}
-      {navClick === "visited countries" &&  <VisitedCountriesMain />
-      }
+      {navClick === "home" && <HomeMain allCountries={allCountry} setNavClick = {setNavClick} navClick = {navClick} setSearchCountry={setSearchCountry} searchCountry={searchCountry} />}
+      {navClick === "countries" &&  <CountriesMain searchCountry={searchCountry} setSearchCountry={setSearchCountry} countries={allCountry}/>}
+      {navClick === "visited countries" &&  <VisitedCountriesMain />}
+
       <Footer />
 
     </section>

@@ -9,17 +9,24 @@ interface HomeMainProps {
   allCountries: Type[];
   setNavClick: (value: NavClick) => void;
   navClick: NavClick;
+  searchCountry: string;
+  setSearchCountry: (value: string) => void;
 
 }
 
 
-export default function HomeMain({allCountries, setNavClick, navClick } : HomeMainProps){
+export default function HomeMain({allCountries, setNavClick, navClick, searchCountry, setSearchCountry } : HomeMainProps){
 console.log(allCountries.length)
   return (
     <div className="container">
       <HeroSection></HeroSection>
       <ExploreCount data = {allCountries}></ExploreCount>
-      <RenderCard data ={allCountries} setNavClick = {setNavClick} navClick = {navClick} ></RenderCard>
+      
+      <RenderCard data ={allCountries} 
+      setNavClick = {setNavClick} 
+      navClick = {navClick} 
+      searchCountry = {searchCountry} 
+      setSearchCountry = {setSearchCountry} ></RenderCard>
       
     </div>
   )

@@ -9,7 +9,9 @@ interface ExploreCountProps {
 export default function ExploreCount({data} : ExploreCountProps) {
     
     const continents = [...new Set(data.flatMap(country => country.continents.continents))];
-
+    const populationTotal = data.reduce((total, country) => total + country.population.population, 0)
+    const populationInBillions = (populationTotal / 1_000_000_000).toFixed(1);
+    console.log(populationTotal)
 
 
         
@@ -59,7 +61,7 @@ export default function ExploreCount({data} : ExploreCountProps) {
           </div>
 
           <div>
-            <p className="text-2xl font-bold text-gray-800">8.1B</p>
+            <p className="text-2xl font-bold text-gray-800"><span className="text-red-500">{populationInBillions}</span> Billion</p>
             <p className="text-sm text-gray-400">World Population</p>
           </div>
         </div>

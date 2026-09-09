@@ -7,11 +7,11 @@ interface CardProps {
 
 function Card({ data }: CardProps) {
   const buttonUi: { [key: string]: string } = {
-    Asia: "bg-amber-100 text-amber-500",
+    Asia: "bg-pink-100 text-pink-500",
     Europe: "bg-blue-100 text-blue-500",
     Africa: "bg-green-100 text-green-500",
     "North America": "bg-yellow-100 text-yellow-500",
-    "South Americas": "bg-red-100 text-red-500",
+    "South America": "bg-red-100 text-red-500",
     Oceania: "bg-purple-100 text-purple-500",
     Antarctica: "bg-cyan-100 text-cyan-500",
   };

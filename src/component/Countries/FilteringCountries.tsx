@@ -10,15 +10,18 @@ interface FilteringCountriesProps {
   populationFilter: string;
   setPopulationFilter: React.Dispatch<React.SetStateAction<populationfilter>>;
   peopleFilter: number;
+  searchCountry: string;
+  setSearchCountry: (value: string) => void;
 }
 
-export default function FilteringCountries({ continentFilter, setSelectedFilter, populationFilter, setPopulationFilter, peopleFilter }
+export default function FilteringCountries({ continentFilter, setSelectedFilter, populationFilter, setPopulationFilter, peopleFilter, searchCountry, setSearchCountry }
 
   : FilteringCountriesProps) {
 
   return (
-    <section className="mt-6 rounded-2xl border border-gray-100 bg-white p-4 shadow-sm">
+    <section className="mt-1 rounded-2xl border border-gray-100 bg-white p-4 shadow-sm mb-4">
       {/* Top Row */}
+      
       <div className="mb-4 flex flex-col justify-between gap-3 sm:flex-row sm:items-center">
         <div>
           <h2 className="text-lg font-bold text-gray-800">Explore Countries</h2>
@@ -33,6 +36,29 @@ export default function FilteringCountries({ continentFilter, setSelectedFilter,
           countries
         </p>
       </div>
+
+      <div className="mx-auto mb-2 flex max-w-full items-center rounded-2xl bg-white p-2 border border-gray-50 shadow-sm">
+            <span className="px-3 text-xl text-gray-400">🔍</span>
+
+            <input
+              value={searchCountry}
+              onChange={(e) => setSearchCountry(e.target.value)}
+              type="text"
+              placeholder="Search for a country..."
+              className="flex-1 bg-transparent px-2 py-3 text-sm
+                   text-gray-700 outline-none
+                   placeholder:text-gray-400"
+            />
+
+            <button
+              type="button"
+              className="rounded-xl bg-green-500 px-5 py-3
+                   text-sm font-semibold text-white
+                   transition hover:bg-green-600"
+            >
+              Search
+            </button>
+          </div>
 
       {/* Filters */}
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
@@ -91,11 +117,30 @@ export default function FilteringCountries({ continentFilter, setSelectedFilter,
           </label>
 
           <select
+
             className="w-full rounded-xl border border-gray-200 bg-gray-50
                    px-3 py-2.5 text-sm text-gray-600 outline-none
                    transition focus:border-green-400 focus:ring-2
-                   focus:ring-green-100"
+                   focus:ring-green-100" 
           >
+            <option>All Languages</option>
+            <option>English</option>
+            <option>Spanish</option>
+            <option>French</option>
+            <option>Arabic</option>
+            <option>Bengali</option>
+            <option>All Languages</option>
+            <option>English</option>
+            <option>Spanish</option>
+            <option>French</option>
+            <option>Arabic</option>
+            <option>Bengali</option>
+            <option>All Languages</option>
+            <option>English</option>
+            <option>Spanish</option>
+            <option>French</option>
+            <option>Arabic</option>
+            <option>Bengali</option>
             <option>All Languages</option>
             <option>English</option>
             <option>Spanish</option>
