@@ -19,7 +19,13 @@ export default function HomeMain({allCountries, setNavClick, navClick, searchCou
 console.log(allCountries.length)
   return (
     <div className="container">
-      <HeroSection></HeroSection>
+      <HeroSection 
+      data = {allCountries}
+      searchCountry = {searchCountry} 
+      setSearchCountry = {setSearchCountry}
+      navClick = {navClick}
+      setNavClick={setNavClick}
+      ></HeroSection>
       <ExploreCount data = {allCountries}></ExploreCount>
       
       <RenderCard data ={allCountries} 

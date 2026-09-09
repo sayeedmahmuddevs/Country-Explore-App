@@ -1,4 +1,16 @@
-export default function HeroSection() {
+import CountriesMain from "../Countries/Countries-main";
+import type{ Type } from "../../Type";
+
+type NavClick = "home" | "countries" | "visited countries";
+
+interface HerosectionProps {
+  data: Type[]
+  searchCountry: string
+  setSearchCountry: (value: string) => void
+  setNavClick: (value: NavClick) => void;
+  navClick: NavClick;
+}
+export default function HeroSection({data, searchCountry, setSearchCountry, navClick, setNavClick}: HerosectionProps) {
   return (
     <div>
       <section className="relative mt-5 overflow-hidden rounded-3xl bg-linear-to-r from-green-600 to-emerald-500 px-6 py-14 text-white shadow-lg">
@@ -28,6 +40,8 @@ export default function HeroSection() {
             <span className="px-3 text-xl text-gray-400">🔍</span>
 
             <input
+              value={searchCountry}
+              onChange={(e)=> setSearchCountry(e.target.value)}
               type="text"
               placeholder="Search for a country..."
               className="flex-1 bg-transparent px-2 py-3 text-sm
@@ -36,12 +50,14 @@ export default function HeroSection() {
             />
 
             <button
+              onClick={()=> setNavClick('countries')}
               type="button"
               className="rounded-xl bg-green-500 px-5 py-3
                    text-sm font-semibold text-white
                    transition hover:bg-green-600"
             >
               Search
+              {navClick=== "countries" && <CountriesMain countries ={data} searchCountry={searchCountry} setSearchCountry={setSearchCountry} ></CountriesMain>}
             </button>
           </div>
         </div>
