@@ -11,6 +11,7 @@ interface AddCardTypeProps {
   allData: Country[];
   showAllVisited : boolean;
   handleShowAllVisited: (value: boolean) => void
+  
 }
 
 export default function AddCard({ visitedData, allData, showAllVisited, handleShowAllVisited }: AddCardTypeProps) {
@@ -131,8 +132,10 @@ export default function AddCard({ visitedData, allData, showAllVisited, handleSh
 
             
           )}
-          {showAllVisited && (<MainCard visitedData = {visitedData} handleShowAllVisited = {handleShowAllVisited} ></MainCard>) }
+          {showAllVisited && (<MainCard visitedData = {visitedData} handleShowAllVisited = {handleShowAllVisited} 
+          ></MainCard>) }
         </div>
+        
       </div>
     </section>
   );

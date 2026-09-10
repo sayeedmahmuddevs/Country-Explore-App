@@ -1,4 +1,3 @@
-import { useState } from "react";
 import type { Type } from "../../Type";
 
 type Country = Type & {
@@ -31,11 +30,8 @@ function Countries({
   const peoplesK = Number((country.population.population / 1000).toFixed(1));
   const peoplesH = Number((country.population.population / 1).toFixed());
 
-  const [visit, setVisit] = useState(false);
-
   const handleCountry = () => {
     if (!country.isVisited) {
-      setVisit(true);
       handleVisited(Number(country.ccn3.ccn3));
       handleArrayVisited(country);
     }

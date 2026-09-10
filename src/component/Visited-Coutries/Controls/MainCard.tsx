@@ -1,5 +1,6 @@
 import type { Type } from "../../../Type";
-import VisitFlags from "./VisitFlags";
+import FlagsBox from "./FlagsBox";
+import { useState } from "react";
 
 type Country = Type & {
   isVisited: boolean;
@@ -8,12 +9,24 @@ type Country = Type & {
 interface showVisitedProps{
     visitedData: Country[];
     handleShowAllVisited: (value: boolean) => void
+    
 }
 
 export default function MainCard ({handleShowAllVisited, visitedData} : showVisitedProps) {
+
+  const [editVisited, setEditVisited] = useState(false)
+  const handlEditVisited = (value:boolean) => {
+      setEditVisited(value)
+  }
+
+  const [flagsShow, setFlagsShow] = useState(true)
+  const handlFlagsShow = (value:boolean) => {
+      setFlagsShow(value)
+  }
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
-          <div className="relative w-200 max-w-200 rounded-2xl bg-white p-6 shadow-2xl">
+          <div className="relative w-300 max-w-300 rounded-2xl bg-white p-6 shadow-2xl">
             
             {/* Close Button */}
             <button
@@ -26,7 +39,11 @@ export default function MainCard ({handleShowAllVisited, visitedData} : showVisi
             {/* Content */}
             <div className="w-full">
             
-                <VisitFlags visitedData = {visitedData}></VisitFlags>
+                <FlagsBox
+                editVisited = {editVisited} handleEditVisited={handlEditVisited} 
+                visitedData = {visitedData} 
+                flagsShow = {flagsShow} handleFlagsShow = {handlFlagsShow}
+                ></FlagsBox>
             </div>
           </div>
         </div>
