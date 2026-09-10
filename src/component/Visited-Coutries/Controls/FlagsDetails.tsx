@@ -8,7 +8,7 @@ interface FlagsProps{
     country: Country;
 }
 
-function Flags({country}:FlagsProps) {
+function FlagsDetails({country}:FlagsProps) {
   return (
     <div
             key={country.ccn3.ccn3}
@@ -31,4 +31,4 @@ function Flags({country}:FlagsProps) {
   )
 }
 
-export default Flags
+export default FlagsDetails

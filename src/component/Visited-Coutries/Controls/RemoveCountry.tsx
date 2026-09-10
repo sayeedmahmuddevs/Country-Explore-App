@@ -9,12 +9,17 @@ interface RemoveCountryType {
   country: Country;
   handleTrush: (code: number) => void;
   handleTrushData: (country: Country) => void;
+  pinedData : Country[]
+  handlePined : (country: Country) => void
+
 }
 
 function RemoveCountry({
   country,
   handleTrush,
   handleTrushData,
+  pinedData,
+  handlePined
 }: RemoveCountryType) {
   const trushData = () => {
     handleTrushData(country);
@@ -23,12 +28,17 @@ function RemoveCountry({
   return (
     <div className="mx-20 my-5 bg-gray-100 px-2 rounded-xl py-1">
       <div className="flex justify-between items-center">
-        <div className="flex gap-30 items-center">
+        <div className="grid grid-cols-3 w-70">
           <img
             src={country.flags.flags.png}
             alt={`${country.name.common} flag`}
             className="w-15 h-9 object-cover rounded-sm transition-transform duration-300 ease-out group-hover:scale-140 group-hover:z-10 "
           />
+
+          <button
+          onClick={() => handlePined(country)}
+          className={`${pinedData.some(cnt => cnt.ccn3.ccn3 === country.ccn3.ccn3) ? "text-red-400": "text-black"}`}
+          >{(pinedData.some(cnt => cnt.ccn3.ccn3 === country.ccn3.ccn3)) ? "pined" : pinedData.length >= 3 ? "": "pined"}</button>
 
           <div>
             <h2 className="font-bold">{country.name.common}</h2>

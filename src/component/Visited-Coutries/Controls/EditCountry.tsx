@@ -1,6 +1,8 @@
 import { useState } from "react";
 import type { Type } from "../../../Type";
 import RemoveCountry from "./RemoveCountry";
+import { FaArrowRight } from "react-icons/fa";
+import { FaArrowLeft } from "react-icons/fa";
 
 type SortType = "all" | "A-Z" | "Z-A";
 
@@ -22,25 +24,49 @@ function EditCountry({
   const [searchData, setSearchData] = useState("");
   const [trushSort, setTrushSort] = useState<SortType>("all");
 
-  const datas = visitedData.filter((country) =>
-    country.name.common
-      .toUpperCase()
-      .startsWith(searchData.toUpperCase().trim()),
-  );
+  //   trush data search
 
-  datas.sort((a, b) => {
-    if (trushSort === "A-Z") {
-      return a.name.common.localeCompare(b.name.common);
+  const sortCountries = (country: Country[]) => {
+    const data = [...country]
+
+    const filterData =data.filter((country) =>
+      country.name.common
+        .toUpperCase()
+        .startsWith(searchData.toUpperCase().trim()),
+    );
+
+    //   sorted trush data
+    if (trushSort === "all") {
+      true;
+    } else if (trushSort === "A-Z") {
+      return data.sort((a, b) => a.name.common.localeCompare(b.name.common));
+    } else if (trushSort === "Z-A") {
+      return data.sort((a, b) => b.name.common.localeCompare(a.name.common));
     }
 
-    if (trushSort === "Z-A") {
-      return b.name.common.localeCompare(a.name.common);
-    }
+    return filterData
+  };
 
-    return 0;
-  });
+  const [pinedData, setPinedData] = useState<Country[]>([]);
+  const handlePined = (country: Country) => {
+    setPinedData((prev) => {
+      if (prev.some((cnt) => cnt.ccn3.ccn3 === country.ccn3.ccn3)) {
+        return prev.filter((cnt) => cnt.ccn3.ccn3 !== country.ccn3.ccn3);
+      }
 
-  console.log(visitedData.length);
+      if (pinedData.length === 3) {
+        return prev;
+      }
+
+      return [...prev, country];
+    });
+  };
+
+  const [pined, setPined] = useState<boolean>(false);
+
+  const visitedCountries = sortCountries(visitedData)
+  const visitePinedData = sortCountries(pinedData)
+
 
   return (
     <div className="p-4 rounded-3xl shadow-2xs">
@@ -60,6 +86,7 @@ function EditCountry({
         />
       </div>
 
+      {/* trush data sorted */}
       <div className="flex justify-between mx-20">
         <div>
           <select
@@ -71,17 +98,46 @@ function EditCountry({
             <option value="Z-A">Z-A</option>
           </select>
         </div>
-        <span>pined</span>
+        <button
+          onClick={() => setPined(!pined)}
+          className={`text-lg ${pined ? "text-red-500" : "text-black"} flex justify-between items-center underline underline-offset-1`}
+        >
+          {pined ? (
+            <>
+              <FaArrowLeft /> <span>Pined</span>
+            </>
+          ) : (
+            <>
+              <span>Pin</span>
+              <FaArrowRight />
+            </>
+          )}
+        </button>
       </div>
       <div className="overflow-scroll h-100">
-        {datas.map((country) => (
-          <RemoveCountry
-            key={country.ccn3.ccn3}
-            handleTrush={handleTrush}
-            country={country}
-            handleTrushData={handleTrushData}
-          />
-        ))}
+        {!pined &&
+          visitedCountries.map((country) => (
+            <RemoveCountry
+              key={country.ccn3.ccn3}
+              handleTrush={handleTrush}
+              country={country}
+              handleTrushData={handleTrushData}
+              pinedData={pinedData}
+              handlePined={handlePined}
+            />
+          ))}
+
+        {pined &&
+          visitePinedData.map((country) => (
+            <RemoveCountry
+              key={country.ccn3.ccn3}
+              handleTrush={handleTrush}
+              country={country}
+              handleTrushData={handleTrushData}
+              pinedData={pinedData}
+              handlePined={handlePined}
+            />
+          ))}
       </div>
     </div>
   );

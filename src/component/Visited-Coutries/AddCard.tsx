@@ -98,52 +98,59 @@ export default function AddCard({
 
         {/* Bottom Stats */}
 
-        <div className="max-w-full flex flex-wrap items-center gap-5 my-4 mt-7 ">
-          <h4 className="mr-2 font-bold">Visited Country : </h4>
-          {visitedData.length === 0 ? "No country available" : ""}
-          {visitedData.slice(0, 12).map((country) => (
-            <div
-              key={country.ccn3.ccn3}
-              className="relative group w-10 h-7 flex items-center justify-center"
-            >
-              <p
-                className="absolute bottom-full left-1/2 -translate-x-1/2  translate-y-2 whitespace-nowrap rounded-md
+        <div className="flex justify-between items-center">
+          <div className="max-w-full flex flex-wrap items-center gap-5 my-4 mt-7  ">
+            <h4 className="mr-2 font-bold">Visited Country : </h4>
+            {visitedData.length === 0 ? "No country available" : ""}
+            {visitedData.slice(0, 12).map((country) => (
+              <div
+                key={country.ccn3.ccn3}
+                className="relative group w-10 h-7 flex items-center justify-center"
+              >
+                <p
+                  className="absolute bottom-full left-1/2 -translate-x-1/2  translate-y-2 whitespace-nowrap rounded-md
               bg-black px-2 py-1 text-xs text-white opacity-0 scale-0 pointer-events-none transition-all
                 duration-300 ease-out group-hover:mb-3  group-hover:translate-y-0 group-hover:opacity-100 group-hover:scale-100 z-20 "
-              >
-                {country.name.common}
-              </p>
-              {/* Flag */}
-              <img
-                src={country.flags.flags.png}
-                alt={`${country.name.common} flag`}
-                className="w-10 h-7 object-cover rounded-sm transition-transform duration-300 ease-out group-hover:scale-140 group-hover:z-10 "
-              />
-            </div>
-          ))}
+                >
+                  {country.name.common}
+                </p>
+                {/* Flag */}
+                <img
+                  src={country.flags.flags.png}
+                  alt={`${country.name.common} flag`}
+                  className="w-10 h-7 object-cover rounded-sm transition-transform duration-300 ease-out group-hover:scale-140 group-hover:z-10 "
+                />
+              </div>
+            ))}
 
-          {visitedData.length > 12 && (
-            <button
-              onClick={() => handleShowAllVisited(true)}
-              className="relative border border-gray-200 w-10 h-7 shadow-lg opacity-70 font-bold hover:scale-110 transition-transform duration-200 rounded-sm"
-            >
-              <img
-                src={visitedData[12].flags.flags.png}
-                className="w-full h-full object-cover rounded-sm transition-transform duration-300 ease-out group-hover:scale-140 group-hover:z-10 opacity-20"
-              />
-              <span className="absolute top-0 right-3">
-                +{visitedData.length - 12}
-              </span>
-            </button>
-          )}
-          {showAllVisited && (
-            <MainCard
-              visitedData={visitedData}
-              handleShowAllVisited={handleShowAllVisited}
-              handleTrush={handleTrush}
-              handleTrushData={handleTrushData}
-            ></MainCard>
-          )}
+            {visitedData.length > 12 && (
+              <button
+                onClick={() => handleShowAllVisited(true)}
+                className="relative border border-gray-200 w-10 h-7 shadow-lg opacity-70 font-bold hover:scale-110 transition-transform duration-200 rounded-sm"
+              >
+                <img
+                  src={visitedData[12].flags.flags.png}
+                  className="w-full h-full object-cover rounded-sm transition-transform duration-300 ease-out group-hover:scale-140 group-hover:z-10 opacity-20"
+                />
+                <span className="absolute top-0 right-3">
+                  +{visitedData.length - 12}
+                </span>
+              </button>
+            )}
+
+            
+            {showAllVisited && (
+              <MainCard
+                visitedData={visitedData}
+                handleShowAllVisited={handleShowAllVisited}
+                handleTrush={handleTrush}
+                handleTrushData={handleTrushData}
+              ></MainCard>
+            )}
+          </div>
+            <button 
+            onClick={() => handleShowAllVisited(true)}
+            className="rounded-xl font-semibold text-gray-500 underline underline-offset-1 cursor-pointer ">More countries</button>
         </div>
       </div>
     </section>
