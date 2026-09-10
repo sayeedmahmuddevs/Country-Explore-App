@@ -9,10 +9,13 @@ type Country = Type & {
 interface showVisitedProps{
     visitedData: Country[];
     handleShowAllVisited: (value: boolean) => void
+    allData : Country[]
+    handleTrush : (code: number) => void
+    handleTrushData : (country: Country) => void
     
 }
 
-export default function MainCard ({handleShowAllVisited, visitedData} : showVisitedProps) {
+export default function MainCard ({handleShowAllVisited, visitedData, allData, handleTrush, handleTrushData} : showVisitedProps) {
 
   const [editVisited, setEditVisited] = useState(false)
   const handlEditVisited = (value:boolean) => {
@@ -41,7 +44,7 @@ export default function MainCard ({handleShowAllVisited, visitedData} : showVisi
             
                 <FlagsBox
                 editVisited = {editVisited} handleEditVisited={handlEditVisited} 
-                visitedData = {visitedData} 
+                visitedData = {visitedData} allData = {allData} handleTrush = {handleTrush} handleTrushData = {handleTrushData}
                 flagsShow = {flagsShow} handleFlagsShow = {handlFlagsShow}
                 ></FlagsBox>
             </div>

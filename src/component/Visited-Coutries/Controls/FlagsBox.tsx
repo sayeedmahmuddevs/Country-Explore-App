@@ -11,6 +11,9 @@ interface VisitedControlProps {
   handleEditVisited: (value: boolean) => void;
   flagsShow : boolean
   handleFlagsShow: (value: boolean) => void;
+  allData : Country[]
+  handleTrush : (code: number) => void
+  handleTrushData : (country: Country) => void
   
 }
 
@@ -19,7 +22,10 @@ function FlagsBox({
   editVisited,
   handleEditVisited,
   flagsShow,
-  handleFlagsShow
+  handleFlagsShow,
+  allData,
+  handleTrush,
+  handleTrushData
 }: VisitedControlProps) {
   
   const handleIditUpdate = () => {
@@ -56,7 +62,7 @@ function FlagsBox({
 
 
 {/* edit flags Dashboard */}
-      {editVisited && <EditCountry visitedData = {visitedData}></EditCountry>}
+      {editVisited && <EditCountry visitedData = {visitedData} allData = {allData} handleTrush = {handleTrush} handleTrushData = {handleTrushData}></EditCountry>}
       
 
 {/* fishined flagsdashboard */}

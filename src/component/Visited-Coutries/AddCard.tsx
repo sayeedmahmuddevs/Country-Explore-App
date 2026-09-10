@@ -11,10 +11,12 @@ interface AddCardTypeProps {
   allData: Country[];
   showAllVisited : boolean;
   handleShowAllVisited: (value: boolean) => void
+  handleTrush : (code: number) => void
+  handleTrushData : (country: Country) => void
   
 }
 
-export default function AddCard({ visitedData, allData, showAllVisited, handleShowAllVisited }: AddCardTypeProps) {
+export default function AddCard({ visitedData, allData, showAllVisited, handleShowAllVisited, handleTrush, handleTrushData }: AddCardTypeProps) {
 
   const Percent = Number((100 * visitedData.length) / allData.length);
 
@@ -132,7 +134,7 @@ export default function AddCard({ visitedData, allData, showAllVisited, handleSh
 
             
           )}
-          {showAllVisited && (<MainCard visitedData = {visitedData} handleShowAllVisited = {handleShowAllVisited} 
+          {showAllVisited && (<MainCard allData = {allData} visitedData = {visitedData} handleShowAllVisited = {handleShowAllVisited} handleTrush = {handleTrush} handleTrushData = {handleTrushData} 
           ></MainCard>) }
         </div>
         

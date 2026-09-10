@@ -1,3 +1,4 @@
+import { useState } from "react";
 import type { Type } from "../../../Type";
 import RemoveCountry from "./RemoveCountry";
 
@@ -7,10 +8,19 @@ type Country = Type & {
 
 interface EditCountryProps {
     visitedData : Country []
+    allData : Country[]
+    handleTrush : (code:number) => void
+    handleTrushData : (country: Country) => void
 }
 
 
-function EditCountry( {visitedData} : EditCountryProps) {
+
+function EditCountry( {visitedData, allData, handleTrush, handleTrushData} : EditCountryProps) {
+    
+    const [searchData, setSearchData] = useState("")
+
+    const datas = visitedData.filter((country) => country.name.common.toUpperCase().startsWith(searchData.toUpperCase().trim()))
+
 console.log(visitedData.length)
 
   return (
@@ -23,6 +33,8 @@ console.log(visitedData.length)
         <span className="px-3 text-xl text-gray-400">🔍</span>
 
         <input
+            value={searchData}
+            onChange={(e) =>setSearchData(e.target.value) }
           type="text"
           placeholder="Search for a country..."
           className="flex-1 bg-transparent px-2 py-1 text-sm text-gray-700 outline-none placeholder:text-gray-400"
@@ -34,8 +46,8 @@ console.log(visitedData.length)
         <span>pined</span>
       </div>
       <div className="overflow-scroll h-100">
-            {visitedData.map((country) => (
-        <RemoveCountry key = {country.ccn3.ccn3} country = {country}  />
+            {datas.map((country) => (
+        <RemoveCountry key = {country.ccn3.ccn3} handleTrush = {handleTrush} country = {country} handleTrushData = {handleTrushData}  />
     ))}
       </div>
     

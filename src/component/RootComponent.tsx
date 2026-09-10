@@ -35,7 +35,19 @@ function RootComponent({ data }: RootComponentProps) {
     );
   };
 
+//  card will remove when allData will be update
+const handleTrush = (code : number) => {
+  setAllCountry((prev) =>
+      prev.map((country) =>
+        Number(country.ccn3.ccn3) === code
+          ? { ...country, isVisited: false }
+          : country,
+      ),
+    );
+}
+
   const [searchCountry, setSearchCountry] = useState<string>("");
+  
 
   // Nav Click
 
@@ -54,6 +66,11 @@ function RootComponent({ data }: RootComponentProps) {
       }
       return [...pre, country];
     });
+  };
+
+
+  const handleTrushedData = (country : Country ) => {
+    setVisited( pre => pre.filter(pr => pr.ccn3.ccn3 !== country.ccn3.ccn3))
   };
 
   return (
@@ -83,7 +100,7 @@ function RootComponent({ data }: RootComponentProps) {
       )}
 
       {navClick === "visited countries" && (
-        <VisitedCountriesMain visitedData={visited} allData = {allCountry} />
+        <VisitedCountriesMain visitedData={visited} allData = {allCountry} handleTrush = {handleTrush} handleTrushData = {handleTrushedData}/>
       )}
 
       <Footer />

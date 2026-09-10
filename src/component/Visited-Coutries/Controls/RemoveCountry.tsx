@@ -6,10 +6,16 @@ type Country = Type & {
 
 interface RemoveCountryType{
   country: Country
+  handleTrush : (code : number) => void
+  handleTrushData : (country: Country) => void
 }
 
 
-function RemoveCountry({country}: RemoveCountryType) {
+function RemoveCountry({country, handleTrush, handleTrushData}: RemoveCountryType) {
+  const trushData = () => {
+    handleTrushData(country)
+    handleTrush(Number(country.ccn3.ccn3))
+  }
   return (
     <div className="mx-20 my-5 bg-gray-100 px-2 rounded-xl py-1">
         <div className="flex justify-between items-center">
@@ -26,7 +32,9 @@ function RemoveCountry({country}: RemoveCountryType) {
             </div>
           </div>
 
-          <span>trush</span>
+          <button 
+          onClick={trushData }
+          >trush</button>
         </div>
       </div>
   )

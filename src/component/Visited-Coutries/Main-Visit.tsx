@@ -11,9 +11,11 @@ type Country = Type & {
 interface visitedCountriesMainTypeProps {
   visitedData: Country[];
   allData: Country[]
+  handleTrush : (code: number) => void
+  handleTrushData : (country: Country) => void
 }
 
-function VisitedCountriesMain({ visitedData, allData }: visitedCountriesMainTypeProps) {
+function VisitedCountriesMain({ visitedData, allData, handleTrush, handleTrushData }: visitedCountriesMainTypeProps) {
 
   const [showAllVisited, setShowAllVisited] = useState(false)
   const handleShowAllVisited = (value: boolean):void => {
@@ -27,7 +29,7 @@ function VisitedCountriesMain({ visitedData, allData }: visitedCountriesMainType
       
       <AddCard 
       visitedData={visitedData} 
-      allData = {allData} 
+      allData = {allData} handleTrush = {handleTrush} handleTrushData = {handleTrushData}
       showAllVisited = {showAllVisited} handleShowAllVisited = {handleShowAllVisited}
       
       ></AddCard>
