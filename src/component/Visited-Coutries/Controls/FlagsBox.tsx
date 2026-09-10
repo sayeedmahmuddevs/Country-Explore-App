@@ -1,6 +1,9 @@
+
 import type { Type } from "../../../Type";
 import EditCountry from "./EditCountry";
 import FlagsDetails from "./FlagsDetails";
+
+
 type Country = Type & {
   isVisited: boolean;
 };
@@ -11,9 +14,9 @@ interface VisitedControlProps {
   handleEditVisited: (value: boolean) => void;
   flagsShow : boolean
   handleFlagsShow: (value: boolean) => void;
-  allData : Country[]
   handleTrush : (code: number) => void
   handleTrushData : (country: Country) => void
+   
   
 }
 
@@ -23,9 +26,8 @@ function FlagsBox({
   handleEditVisited,
   flagsShow,
   handleFlagsShow,
-  allData,
   handleTrush,
-  handleTrushData
+  handleTrushData,
 }: VisitedControlProps) {
   
   const handleIditUpdate = () => {
@@ -62,7 +64,7 @@ function FlagsBox({
 
 
 {/* edit flags Dashboard */}
-      {editVisited && <EditCountry visitedData = {visitedData} allData = {allData} handleTrush = {handleTrush} handleTrushData = {handleTrushData}></EditCountry>}
+      {editVisited && <EditCountry visitedData = {visitedData} handleTrush = {handleTrush} handleTrushData = {handleTrushData}></EditCountry>}
       
 
 {/* fishined flagsdashboard */}

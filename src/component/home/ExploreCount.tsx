@@ -4,9 +4,10 @@ type Country = Type & {
 };
 interface ExploreCountProps {
   data: Country[];
+  visited : Country[]
 }
 
-export default function ExploreCount({ data }: ExploreCountProps) {
+export default function ExploreCount({ data, visited }: ExploreCountProps) {
   const continents = [
     ...new Set(data.flatMap((country) => country.continents.continents)),
   ];
@@ -38,7 +39,7 @@ export default function ExploreCount({ data }: ExploreCountProps) {
         </div>
 
         <div>
-          <p className="text-2xl font-bold text-gray-800">12</p>
+          <p className="text-2xl font-bold text-gray-800">{visited.length}</p>
           <p className="text-sm text-gray-400">Visited</p>
         </div>
       </div>

@@ -1,7 +1,6 @@
 import type { Type } from "../../Type";
 import MainCard from "./Controls/MainCard";
 
-
 type Country = Type & {
   isVisited: boolean;
 };
@@ -9,15 +8,20 @@ type Country = Type & {
 interface AddCardTypeProps {
   visitedData: Country[];
   allData: Country[];
-  showAllVisited : boolean;
-  handleShowAllVisited: (value: boolean) => void
-  handleTrush : (code: number) => void
-  handleTrushData : (country: Country) => void
-  
+  showAllVisited: boolean;
+  handleShowAllVisited: (value: boolean) => void;
+  handleTrush: (code: number) => void;
+  handleTrushData: (country: Country) => void;
 }
 
-export default function AddCard({ visitedData, allData, showAllVisited, handleShowAllVisited, handleTrush, handleTrushData }: AddCardTypeProps) {
-
+export default function AddCard({
+  visitedData,
+  allData,
+  showAllVisited,
+  handleShowAllVisited,
+  handleTrush,
+  handleTrushData,
+}: AddCardTypeProps) {
   const Percent = Number((100 * visitedData.length) / allData.length);
 
   return (
@@ -96,6 +100,7 @@ export default function AddCard({ visitedData, allData, showAllVisited, handleSh
 
         <div className="max-w-full flex flex-wrap items-center gap-5 my-4 mt-7 ">
           <h4 className="mr-2 font-bold">Visited Country : </h4>
+          {visitedData.length === 0 ? "No country available" : ""}
           {visitedData.slice(0, 12).map((country) => (
             <div
               key={country.ccn3.ccn3}
@@ -116,11 +121,11 @@ export default function AddCard({ visitedData, allData, showAllVisited, handleSh
               />
             </div>
           ))}
-          {visitedData.length > 12 && ( 
-            <button 
-            onClick={() => handleShowAllVisited(true)}
-            className="relative border border-gray-200 w-10 h-7 shadow-lg opacity-70 font-bold hover:scale-110 transition-transform duration-200 rounded-sm"
-            
+
+          {visitedData.length > 12 && (
+            <button
+              onClick={() => handleShowAllVisited(true)}
+              className="relative border border-gray-200 w-10 h-7 shadow-lg opacity-70 font-bold hover:scale-110 transition-transform duration-200 rounded-sm"
             >
               <img
                 src={visitedData[12].flags.flags.png}
@@ -129,15 +134,17 @@ export default function AddCard({ visitedData, allData, showAllVisited, handleSh
               <span className="absolute top-0 right-3">
                 +{visitedData.length - 12}
               </span>
-            
             </button>
-
-            
           )}
-          {showAllVisited && (<MainCard allData = {allData} visitedData = {visitedData} handleShowAllVisited = {handleShowAllVisited} handleTrush = {handleTrush} handleTrushData = {handleTrushData} 
-          ></MainCard>) }
+          {showAllVisited && (
+            <MainCard
+              visitedData={visitedData}
+              handleShowAllVisited={handleShowAllVisited}
+              handleTrush={handleTrush}
+              handleTrushData={handleTrushData}
+            ></MainCard>
+          )}
         </div>
-        
       </div>
     </section>
   );

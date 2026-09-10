@@ -11,6 +11,7 @@ type Country = Type & {
 
 interface HomeMainProps {
   allCountries: Country[];
+  visited : Country[]
   setNavClick: (value: NavClick) => void;
   navClick: NavClick;
   searchCountry: string;
@@ -21,6 +22,7 @@ interface HomeMainProps {
 
 export default function HomeMain({
   allCountries,
+  visited,
   setNavClick,
   navClick,
   searchCountry,
@@ -40,7 +42,7 @@ export default function HomeMain({
         handleArrayVisited={handleArrayVisited}
       ></HeroSection>
 
-      <ExploreCount data={allCountries}></ExploreCount>
+      <ExploreCount data={allCountries} visited = {visited}></ExploreCount>
 
       <RenderCard
         data={allCountries}

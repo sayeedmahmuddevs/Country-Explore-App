@@ -2,20 +2,19 @@ import type { Type } from "../../../Type";
 import FlagsBox from "./FlagsBox";
 import { useState } from "react";
 
+
 type Country = Type & {
   isVisited: boolean;
 };
-
 interface showVisitedProps{
     visitedData: Country[];
     handleShowAllVisited: (value: boolean) => void
-    allData : Country[]
     handleTrush : (code: number) => void
     handleTrushData : (country: Country) => void
     
 }
 
-export default function MainCard ({handleShowAllVisited, visitedData, allData, handleTrush, handleTrushData} : showVisitedProps) {
+export default function MainCard ({handleShowAllVisited, visitedData, handleTrush, handleTrushData} : showVisitedProps) {
 
   const [editVisited, setEditVisited] = useState(false)
   const handlEditVisited = (value:boolean) => {
@@ -26,6 +25,7 @@ export default function MainCard ({handleShowAllVisited, visitedData, allData, h
   const handlFlagsShow = (value:boolean) => {
       setFlagsShow(value)
   }
+
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
@@ -44,8 +44,9 @@ export default function MainCard ({handleShowAllVisited, visitedData, allData, h
             
                 <FlagsBox
                 editVisited = {editVisited} handleEditVisited={handlEditVisited} 
-                visitedData = {visitedData} allData = {allData} handleTrush = {handleTrush} handleTrushData = {handleTrushData}
+                visitedData = {visitedData} handleTrush = {handleTrush} handleTrushData = {handleTrushData}
                 flagsShow = {flagsShow} handleFlagsShow = {handlFlagsShow}
+                
                 ></FlagsBox>
             </div>
           </div>

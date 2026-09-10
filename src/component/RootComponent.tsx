@@ -86,6 +86,7 @@ const handleTrush = (code : number) => {
           searchCountry={searchCountry}
           handleVisited={handleVisited}
           handleArrayVisited={handleArrayVisited}
+          visited = {visited}
         />
       )}
 

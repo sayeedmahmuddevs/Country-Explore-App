@@ -128,10 +128,11 @@ export default function CountriesMain({
         setSorted={setSorted}
       />
       <section>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {peopleFilter.map((country, index) => (
+        <div className={`${peopleFilter.length === 0 ? "" : "grid"} grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 text-center`}>
+          {peopleFilter.length === 0 ? "No country available": ""}
+          {peopleFilter.map((country) => (
             <Countries
-              key={index}
+              key={country.ccn3.ccn3}
               country={country}
               handleVisited={handleVisited}
               handleArrayVisited={handleArrayVisited}
