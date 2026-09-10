@@ -1,10 +1,22 @@
+type continentsfilters =
+  | "all"
+  | "Asia"
+  | "Europe"
+  | "Africa"
+  | "North America"
+  | "South Americas"
+  | "Oceania"
+  | "Antarctica";
+type populationfilter =
+  | "all"
+  | "under 1 million"
+  | "under 10 million"
+  | "under 100 million"
+  | "more than 100 million";
 
-
-type continentsfilters = "all" | "Asia" | "Europe" | "Africa" | "North America" | "South Americas" | "Oceania" | "Antarctica";
-type populationfilter = "all" | "under 1 million" | "under 10 million" | "under 100 million" | "more than 100 million";  
+type countrySort = "all" | "A-Z" | "Z-A" | "Low to High" | "High to Low";
 
 interface FilteringCountriesProps {
-  
   continentFilter: string;
   setSelectedFilter: React.Dispatch<React.SetStateAction<continentsfilters>>;
   populationFilter: string;
@@ -12,16 +24,32 @@ interface FilteringCountriesProps {
   peopleFilter: number;
   searchCountry: string;
   setSearchCountry: (value: string) => void;
+  sorted: string;
+  setSorted: React.Dispatch<React.SetStateAction<countrySort>>;
 }
 
-export default function FilteringCountries({ continentFilter, setSelectedFilter, populationFilter, setPopulationFilter, peopleFilter, searchCountry, setSearchCountry }
-
-  : FilteringCountriesProps) {
+export default function FilteringCountries({
+  continentFilter,
+  setSelectedFilter,
+  populationFilter,
+  setPopulationFilter,
+  peopleFilter,
+  searchCountry,
+  setSearchCountry,
+  sorted,
+  setSorted,
+}: FilteringCountriesProps) {
+  const handleFilterClear = () => {
+    setPopulationFilter("all");
+    setSearchCountry("");
+    setSelectedFilter("all");
+    setSorted("all");
+  };
 
   return (
     <section className="mt-1 rounded-2xl border border-gray-100 bg-white p-4 shadow-sm mb-4">
       {/* Top Row */}
-      
+
       <div className="mb-4 flex flex-col justify-between gap-3 sm:flex-row sm:items-center">
         <div>
           <h2 className="text-lg font-bold text-gray-800">Explore Countries</h2>
@@ -30,38 +58,33 @@ export default function FilteringCountries({ continentFilter, setSelectedFilter,
             Discover countries from around the world
           </p>
         </div>
-
-        <p className="text-sm text-gray-500">
-          Showing <span className="font-bold text-green-500">{peopleFilter}</span>{" "}
-          countries
-        </p>
       </div>
 
       <div className="mx-auto mb-2 flex max-w-full items-center rounded-2xl bg-white p-2 border border-gray-50 shadow-sm">
-            <span className="px-3 text-xl text-gray-400">🔍</span>
+        <span className="px-3 text-xl text-gray-400">🔍</span>
 
-            <input
-              value={searchCountry}
-              onChange={(e) => setSearchCountry(e.target.value)}
-              type="text"
-              placeholder="Search for a country..."
-              className="flex-1 bg-transparent px-2 py-3 text-sm
+        <input
+          value={searchCountry}
+          onChange={(e) => setSearchCountry(e.target.value)}
+          type="text"
+          placeholder="Search for a country..."
+          className="flex-1 bg-transparent px-2 py-3 text-sm
                    text-gray-700 outline-none
                    placeholder:text-gray-400"
-            />
+        />
 
-            <button
-              type="button"
-              className="rounded-xl bg-green-500 px-5 py-3
+        <button
+          type="button"
+          className="rounded-xl bg-green-500 px-5 py-3
                    text-sm font-semibold text-white
                    transition hover:bg-green-600"
-            >
-              Search
-            </button>
-          </div>
+        >
+          Search
+        </button>
+      </div>
 
       {/* Filters */}
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {/* Region */}
         <div>
           <label className="mb-1 block text-xs font-semibold text-gray-500">
@@ -70,21 +93,22 @@ export default function FilteringCountries({ continentFilter, setSelectedFilter,
 
           <select
             value={continentFilter}
-            onChange={(e) => setSelectedFilter(e.target.value as continentsfilters)}
-
+            onChange={(e) =>
+              setSelectedFilter(e.target.value as continentsfilters)
+            }
             className="w-full rounded-xl border border-gray-200 bg-gray-50
                    px-3 py-2.5 text-sm text-gray-600 outline-none
                    transition focus:border-green-400 focus:ring-2
                    focus:ring-green-100"
           >
-            <option value = "all">All Regions</option>
-            <option value = "Africa">Africa</option>
-            <option value = "Asia">Asia</option>
-            <option value = "South America">South America</option>
-            <option value = "North America">North America</option>
-            <option value = "Europe">Europe</option>
-            <option value = "Oceania">Oceania</option>
-            <option value = "Antarctica">Antarctica</option>
+            <option value="all">All Regions</option>
+            <option value="Africa">Africa</option>
+            <option value="Asia">Asia</option>
+            <option value="South America">South America</option>
+            <option value="North America">North America</option>
+            <option value="Europe">Europe</option>
+            <option value="Oceania">Oceania</option>
+            <option value="Antarctica">Antarctica</option>
           </select>
         </div>
 
@@ -96,7 +120,9 @@ export default function FilteringCountries({ continentFilter, setSelectedFilter,
 
           <select
             value={populationFilter}
-            onChange={(e) => setPopulationFilter(e.target.value as populationfilter)}
+            onChange={(e) =>
+              setPopulationFilter(e.target.value as populationfilter)
+            }
             className="w-full rounded-xl border border-gray-200 bg-gray-50
                    px-3 py-2.5 text-sm text-gray-600 outline-none
                    transition focus:border-green-400 focus:ring-2
@@ -111,44 +137,6 @@ export default function FilteringCountries({ continentFilter, setSelectedFilter,
         </div>
 
         {/* Language */}
-        <div>
-          <label className="mb-1 block text-xs font-semibold text-gray-500">
-            Language
-          </label>
-
-          <select
-
-            className="w-full rounded-xl border border-gray-200 bg-gray-50
-                   px-3 py-2.5 text-sm text-gray-600 outline-none
-                   transition focus:border-green-400 focus:ring-2
-                   focus:ring-green-100" 
-          >
-            <option>All Languages</option>
-            <option>English</option>
-            <option>Spanish</option>
-            <option>French</option>
-            <option>Arabic</option>
-            <option>Bengali</option>
-            <option>All Languages</option>
-            <option>English</option>
-            <option>Spanish</option>
-            <option>French</option>
-            <option>Arabic</option>
-            <option>Bengali</option>
-            <option>All Languages</option>
-            <option>English</option>
-            <option>Spanish</option>
-            <option>French</option>
-            <option>Arabic</option>
-            <option>Bengali</option>
-            <option>All Languages</option>
-            <option>English</option>
-            <option>Spanish</option>
-            <option>French</option>
-            <option>Arabic</option>
-            <option>Bengali</option>
-          </select>
-        </div>
 
         {/* Sort */}
         <div>
@@ -157,46 +145,41 @@ export default function FilteringCountries({ continentFilter, setSelectedFilter,
           </label>
 
           <select
+            value={sorted}
+            onChange={(e) => setSorted(e.target.value as countrySort)}
             className="w-full rounded-xl border border-gray-200 bg-gray-50
                    px-3 py-2.5 text-sm text-gray-600 outline-none
                    transition focus:border-green-400 focus:ring-2
                    focus:ring-green-100"
           >
             <option value="all">Any Sort</option>
-            <option value ="A-Z">Name: A → Z</option>
-            <option value = "Z-A">Name: Z → A</option>
-            <option value = "high to low">Population: High → Low</option>
-            <option value = "low to high">Population: Low → High</option>
+            <option value="A-Z">Name: A → Z</option>
+            <option value="Z-A">Name: Z → A</option>
+            <option value="High to Low">Population: High → Low</option>
+            <option value="Low to High">Population: Low → High</option>
           </select>
         </div>
       </div>
 
       {/* Active Filters */}
-      <div className="mt-4 flex flex-wrap items-center gap-2">
-        <span className="text-xs font-semibold text-gray-400">
-          Quick filters:
-        </span>
+      <div className="flex justify-between items-center mt-2">
+        <p className="text-sm text-gray-500">
+          Showing{" "}
+          <span className="font-bold text-lg text-green-500">
+            {peopleFilter}
+          </span>{" "}
+          countries
+        </p>
 
-        <button
-          className="rounded-full bg-green-50 px-3 py-1.5 text-xs
-                 font-medium text-green-600 transition hover:bg-green-100"
-        >
-          🌏 Asia
-        </button>
-
-        <button
-          className="rounded-full bg-blue-50 px-3 py-1.5 text-xs
-                 font-medium text-blue-600 transition hover:bg-blue-100"
-        >
-          👥 Large Population
-        </button>
-
-        <button
-          className="rounded-full bg-gray-100 px-3 py-1.5 text-xs
+        <div className="mt-4 flex flex-wrap items-center gap-2">
+          <button
+            onClick={handleFilterClear}
+            className="rounded-full bg-gray-100 px-3 py-1.5 text-xs
                  font-medium text-gray-500 transition hover:bg-gray-200"
-        >
-          Clear Filters
-        </button>
+          >
+            Clear Filters
+          </button>
+        </div>
       </div>
     </section>
   );

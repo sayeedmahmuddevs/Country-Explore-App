@@ -1,18 +1,31 @@
-import CountriesMain from "../Countries/Countries-main";
-import type{ Type } from "../../Type";
+import CountriesMain from "../Countries/Main-Countries";
+import type { Type } from "../../Type";
 
 type NavClick = "home" | "countries" | "visited countries";
 
+type Country = Type & {
+  isVisited: boolean;
+};
 interface HerosectionProps {
-  data: Type[]
-  searchCountry: string
-  setSearchCountry: (value: string) => void
+  data: Country[];
+  searchCountry: string;
+  setSearchCountry: (value: string) => void;
   setNavClick: (value: NavClick) => void;
   navClick: NavClick;
+  handleVisited: (name: number) => void;
+  handleArrayVisited: (country: Country) => void;
 }
-export default function HeroSection({data, searchCountry, setSearchCountry, navClick, setNavClick}: HerosectionProps) {
+export default function HeroSection({
+  data,
+  searchCountry,
+  setSearchCountry,
+  navClick,
+  setNavClick,
+  handleVisited,
+  handleArrayVisited,
+}: HerosectionProps) {
   return (
-    <div>
+    <div className="container mx-auto px-11">
       <section className="relative mt-5 overflow-hidden rounded-3xl bg-linear-to-r from-green-600 to-emerald-500 px-6 py-14 text-white shadow-lg">
         {/* Background decoration */}
         <div className="absolute -right-20 -top-20 h-60 w-60 rounded-full bg-white/10" />
@@ -41,7 +54,7 @@ export default function HeroSection({data, searchCountry, setSearchCountry, navC
 
             <input
               value={searchCountry}
-              onChange={(e)=> setSearchCountry(e.target.value)}
+              onChange={(e) => setSearchCountry(e.target.value)}
               type="text"
               placeholder="Search for a country..."
               className="flex-1 bg-transparent px-2 py-3 text-sm
@@ -50,14 +63,22 @@ export default function HeroSection({data, searchCountry, setSearchCountry, navC
             />
 
             <button
-              onClick={()=> setNavClick('countries')}
+              onClick={() => setNavClick("countries")}
               type="button"
               className="rounded-xl bg-green-500 px-5 py-3
                    text-sm font-semibold text-white
                    transition hover:bg-green-600"
             >
               Search
-              {navClick=== "countries" && <CountriesMain countries ={data} searchCountry={searchCountry} setSearchCountry={setSearchCountry} ></CountriesMain>}
+              {navClick === "countries" && (
+                <CountriesMain
+                  countries={data}
+                  searchCountry={searchCountry}
+                  setSearchCountry={setSearchCountry}
+                  handleVisited={handleVisited}
+                  handleArrayVisited={handleArrayVisited}
+                ></CountriesMain>
+              )}
             </button>
           </div>
         </div>

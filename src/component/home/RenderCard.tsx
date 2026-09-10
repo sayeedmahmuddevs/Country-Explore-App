@@ -1,19 +1,33 @@
 import type { Type } from "../../Type";
-import CountriesMain from "../Countries/Countries-main";
+import CountriesMain from "../Countries/Main-Countries";
 import Card from "./Card";
 import { FaArrowRight } from "react-icons/fa6";
 
 type NavClick = "home" | "countries" | "visited countries";
 
+type Country = Type & {
+  isVisited: boolean;
+};
+
 interface RenderCardProps {
-  data: Type[];
+  data: Country[];
   setNavClick: (value: NavClick) => void;
   navClick: NavClick;
   searchCountry: string;
   setSearchCountry: (value: string) => void;
+  handleVisited: (name: number) => void;
+  handleArrayVisited: (country: Country) => void;
 }
 
-function RenderCard({ data, setNavClick, navClick, searchCountry, setSearchCountry }: RenderCardProps) {
+function RenderCard({
+  data,
+  setNavClick,
+  navClick,
+  searchCountry,
+  setSearchCountry,
+  handleVisited,
+  handleArrayVisited,
+}: RenderCardProps) {
   return (
     <section className="mt-8 container mx-auto px-4 sm:px-10 lg:px-20">
       {/* Section Header */}
@@ -22,13 +36,20 @@ function RenderCard({ data, setNavClick, navClick, searchCountry, setSearchCount
           <h2 className="text-sm lg:text-xl font-bold uppercase tracking-wider text-black">
             Featured Countiries
           </h2>
+
           <button
             className="text-blue-600 font-semibold hover:translate-x-1 transition-transform duration-300"
             onClick={() => setNavClick("countries")}
           >
             View All <FaArrowRight className="inline-block ml-1" />
             {navClick === "countries" && (
-              <CountriesMain countries={data} searchCountry={searchCountry} setSearchCountry={setSearchCountry} />
+              <CountriesMain
+                countries={data}
+                searchCountry={searchCountry}
+                setSearchCountry={setSearchCountry}
+                handleVisited={handleVisited}
+                handleArrayVisited={handleArrayVisited}
+              />
             )}
           </button>
         </div>

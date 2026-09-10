@@ -1,8 +1,11 @@
 import { FaRegHeart, FaArrowRight } from "react-icons/fa6";
 import type { Type } from "../../Type";
+type Country = Type & {
+  isVisited: boolean;
+};
 
 interface CardProps {
-  data: Type;
+  data: Country;
 }
 
 function Card({ data }: CardProps) {
