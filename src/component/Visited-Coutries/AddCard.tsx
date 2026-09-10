@@ -1,4 +1,6 @@
 import type { Type } from "../../Type";
+import MainCard from "./Controls/MainCard";
+
 
 type Country = Type & {
   isVisited: boolean;
@@ -7,10 +9,12 @@ type Country = Type & {
 interface AddCardTypeProps {
   visitedData: Country[];
   allData: Country[];
+  showAllVisited : boolean;
+  handleShowAllVisited: (value: boolean) => void
 }
 
-export default function AddCard({ visitedData, allData }: AddCardTypeProps) {
-  
+export default function AddCard({ visitedData, allData, showAllVisited, handleShowAllVisited }: AddCardTypeProps) {
+
   const Percent = Number((100 * visitedData.length) / allData.length);
 
   return (
@@ -109,8 +113,12 @@ export default function AddCard({ visitedData, allData }: AddCardTypeProps) {
               />
             </div>
           ))}
-          {visitedData.length > 12 && (
-            <button className="relative border border-gray-200 w-10 h-7 shadow-lg opacity-70 font-bold hover:scale-110 transition-transform duration-200 rounded-sm">
+          {visitedData.length > 12 && ( 
+            <button 
+            onClick={() => handleShowAllVisited(true)}
+            className="relative border border-gray-200 w-10 h-7 shadow-lg opacity-70 font-bold hover:scale-110 transition-transform duration-200 rounded-sm"
+            
+            >
               <img
                 src={visitedData[12].flags.flags.png}
                 className="w-full h-full object-cover rounded-sm transition-transform duration-300 ease-out group-hover:scale-140 group-hover:z-10 opacity-20"
@@ -118,9 +126,12 @@ export default function AddCard({ visitedData, allData }: AddCardTypeProps) {
               <span className="absolute top-0 right-3">
                 +{visitedData.length - 12}
               </span>
-
+            
             </button>
+
+            
           )}
+          {showAllVisited && (<MainCard visitedData = {visitedData} handleShowAllVisited = {handleShowAllVisited} ></MainCard>) }
         </div>
       </div>
     </section>
