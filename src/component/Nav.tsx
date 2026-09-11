@@ -1,4 +1,4 @@
-type NavClick = "home" | "countries" | "visited countries";
+type NavClick = "home" | "countries" | "visited countries" | "dashboard"
 
 interface NavProps {
   setNavClick: (value: NavClick) => void;
@@ -53,6 +53,14 @@ function Nav({ setNavClick, navClick }: NavProps) {
               className = {`rounded-lg  px-4 py-2 text-sm font-semibold  hover:bg-blue-100 hover:text-blue-600  ${navClick === "visited countries"? "text-blue-600 bg-blue-50" : "" }`}
             >
               Visited Countries
+            </a>
+
+              <a
+              href="#"
+              onClick={() => setNavClick("dashboard")}
+              className = {`rounded-lg  px-4 py-2 text-sm font-semibold  hover:bg-blue-100 hover:text-blue-600  ${navClick === "dashboard"? "text-blue-600 bg-blue-50" : "" }`}
+            >
+              Dashboard
             </a>
           </div>
 

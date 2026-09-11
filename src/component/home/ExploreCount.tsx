@@ -19,7 +19,7 @@ export default function ExploreCount({ data, visited }: ExploreCountProps) {
   console.log(populationTotal);
 
   return (
-    <section className="mt-5 grid grid-cols-2 gap-3 lg:grid-cols-4 container mx-auto px-4 sm:px-6 lg:px-20">
+    <section className="mt-5 grid grid-cols-2 col-span-5 gap-3 lg:grid-cols-4 container mx-auto px-4 sm:px-6 lg:px-20">
       {/* Total Countries */}
       <div className="flex items-center gap-4 rounded-2xl border border-gray-100 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-md">
         <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-2xl">

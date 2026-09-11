@@ -5,6 +5,7 @@ import VisitedCountriesMain from "./Visited-Coutries/Main-Visit";
 import Nav from "./Nav";
 import type { Type } from "../Type";
 import Footer from "./Footer/Footer";
+import MainDash from "./Dashboard/MainDash";
 
 interface RootComponentProps {
   data: Promise<Type[]>;
@@ -14,7 +15,7 @@ type Country = Type & {
   isVisited: boolean;
 };
 
-type NavClick = "home" | "countries" | "visited countries";
+type NavClick = "home" | "countries" | "visited countries" | "dashboard";
 
 function RootComponent({ data }: RootComponentProps) {
   // fetching Data
@@ -98,6 +99,10 @@ const handleTrush = (code : number) => {
 
       {navClick === "visited countries" && (
         <VisitedCountriesMain visitedData={visited} allData = {allCountry} handleTrush = {handleTrush} setVisited = {setVisited}/>
+      )}
+
+      {navClick === "dashboard" && (
+        <MainDash visitedData={visited} countriesData = {allCountry} />
       )}
 
       <Footer />
