@@ -69,10 +69,6 @@ const handleTrush = (code : number) => {
   };
 
 
-  const handleTrushedData = (country : Country ) => {
-    setVisited( pre => pre.filter(pr => pr.ccn3.ccn3 !== country.ccn3.ccn3))
-  };
-
   return (
     <section>
       <Nav setNavClick={handleNavClick} navClick={navClick} />
@@ -101,7 +97,7 @@ const handleTrush = (code : number) => {
       )}
 
       {navClick === "visited countries" && (
-        <VisitedCountriesMain visitedData={visited} allData = {allCountry} handleTrush = {handleTrush} handleTrushData = {handleTrushedData}/>
+        <VisitedCountriesMain visitedData={visited} allData = {allCountry} handleTrush = {handleTrush} setVisited = {setVisited}/>
       )}
 
       <Footer />

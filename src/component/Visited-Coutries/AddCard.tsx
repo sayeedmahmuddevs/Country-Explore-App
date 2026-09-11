@@ -11,7 +11,7 @@ interface AddCardTypeProps {
   showAllVisited: boolean;
   handleShowAllVisited: (value: boolean) => void;
   handleTrush: (code: number) => void;
-  handleTrushData: (country: Country) => void;
+  setVisited: React.Dispatch<React.SetStateAction<Country[]>>
 }
 
 export default function AddCard({
@@ -20,7 +20,7 @@ export default function AddCard({
   showAllVisited,
   handleShowAllVisited,
   handleTrush,
-  handleTrushData,
+  setVisited,
 }: AddCardTypeProps) {
   const Percent = Number((100 * visitedData.length) / allData.length);
 
@@ -144,7 +144,7 @@ export default function AddCard({
                 visitedData={visitedData}
                 handleShowAllVisited={handleShowAllVisited}
                 handleTrush={handleTrush}
-                handleTrushData={handleTrushData}
+                setVisited = {setVisited}
               ></MainCard>
             )}
           </div>

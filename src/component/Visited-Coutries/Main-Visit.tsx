@@ -12,10 +12,10 @@ interface visitedCountriesMainTypeProps {
   visitedData: Country[];
   allData: Country[]
   handleTrush : (code: number) => void
-  handleTrushData : (country: Country) => void
+  setVisited: React.Dispatch<React.SetStateAction<Country[]>>
 }
 
-function VisitedCountriesMain({ visitedData, allData, handleTrush, handleTrushData }: visitedCountriesMainTypeProps) {
+function VisitedCountriesMain({ visitedData, allData, handleTrush, setVisited}: visitedCountriesMainTypeProps) {
 
   const [showAllVisited, setShowAllVisited] = useState(false)
   const handleShowAllVisited = (value: boolean):void => {
@@ -29,7 +29,7 @@ function VisitedCountriesMain({ visitedData, allData, handleTrush, handleTrushDa
       
       <AddCard 
       visitedData={visitedData} 
-      allData = {allData} handleTrush = {handleTrush} handleTrushData = {handleTrushData}
+      allData = {allData} handleTrush = {handleTrush} setVisited = {setVisited}
       showAllVisited = {showAllVisited} handleShowAllVisited = {handleShowAllVisited}
       
       ></AddCard>

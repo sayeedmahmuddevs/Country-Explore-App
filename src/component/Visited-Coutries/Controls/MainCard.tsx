@@ -10,11 +10,11 @@ interface showVisitedProps{
     visitedData: Country[];
     handleShowAllVisited: (value: boolean) => void
     handleTrush : (code: number) => void
-    handleTrushData : (country: Country) => void
+    setVisited: React.Dispatch<React.SetStateAction<Country[]>>
     
 }
 
-export default function MainCard ({handleShowAllVisited, visitedData, handleTrush, handleTrushData} : showVisitedProps) {
+export default function MainCard ({handleShowAllVisited, visitedData, handleTrush, setVisited} : showVisitedProps) {
 
   const [editVisited, setEditVisited] = useState(false)
   const handlEditVisited = (value:boolean) => {
@@ -44,7 +44,7 @@ export default function MainCard ({handleShowAllVisited, visitedData, handleTrus
             
                 <FlagsBox
                 editVisited = {editVisited} handleEditVisited={handlEditVisited} 
-                visitedData = {visitedData} handleTrush = {handleTrush} handleTrushData = {handleTrushData}
+                visitedData = {visitedData} handleTrush = {handleTrush} setVisited = {setVisited}
                 flagsShow = {flagsShow} handleFlagsShow = {handlFlagsShow}
                 
                 ></FlagsBox>

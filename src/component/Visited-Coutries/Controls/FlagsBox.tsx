@@ -15,7 +15,7 @@ interface VisitedControlProps {
   flagsShow : boolean
   handleFlagsShow: (value: boolean) => void;
   handleTrush : (code: number) => void
-  handleTrushData : (country: Country) => void
+  setVisited: React.Dispatch<React.SetStateAction<Country[]>>
    
   
 }
@@ -27,7 +27,7 @@ function FlagsBox({
   flagsShow,
   handleFlagsShow,
   handleTrush,
-  handleTrushData,
+  setVisited,
 }: VisitedControlProps) {
   
   const handleIditUpdate = () => {
@@ -64,7 +64,7 @@ function FlagsBox({
 
 
 {/* edit flags Dashboard */}
-      {editVisited && <EditCountry visitedData = {visitedData} handleTrush = {handleTrush} handleTrushData = {handleTrushData}></EditCountry>}
+      {editVisited && <EditCountry visitedData = {visitedData} handleTrush = {handleTrush} setVisited = {setVisited}></EditCountry>}
       
 
 {/* fishined flagsdashboard */}

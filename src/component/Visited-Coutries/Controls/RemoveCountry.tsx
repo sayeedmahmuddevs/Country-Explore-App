@@ -21,6 +21,7 @@ function RemoveCountry({
   pinedData,
   handlePined
 }: RemoveCountryType) {
+  
   const trushData = () => {
     handleTrushData(country);
     handleTrush(Number(country.ccn3.ccn3));
