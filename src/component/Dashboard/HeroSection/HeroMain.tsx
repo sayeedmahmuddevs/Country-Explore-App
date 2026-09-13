@@ -13,7 +13,7 @@ interface HeroMainProps{
 }
 export default function HeroMain({countriesData, visitedData} : HeroMainProps) {
   return (
-    <div className='grid grid-cols-12 px-5 mt-5 gap-2'>
+    <div className='grid grid-cols-1 lg:grid-cols-2 px-5 mt-5 gap-2'>
       <HeroSectionDash/>
       <HeroProgressBar data = {countriesData} visited = {visitedData}/>
     </div>

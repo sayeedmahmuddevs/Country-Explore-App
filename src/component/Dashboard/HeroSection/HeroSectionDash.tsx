@@ -1,7 +1,7 @@
 
 export default function HeroSectionDash() {
   return (
-    <section className=" col-span-7">
+    <section className="">
       <div className="relative overflow-hidden px-10 py-5 rounded-3xl bg-linear-to-r from-blue-400 to-emerald-500  text-white shadow-lg">
         {/* Background decoration */}
         <div className="absolute -right-20 -top-20 h-60 w-60 rounded-full bg-white/10" />

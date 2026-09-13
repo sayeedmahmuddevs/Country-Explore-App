@@ -11,7 +11,7 @@ export interface Type {
 
   currencies: {
     currencies: {
-      [code: string]: {
+      BDT: {
         name: string;
         symbol: string;
       };
@@ -28,7 +28,7 @@ export interface Type {
 
   languages: {
     languages: {
-      [code: string]: string;
+      ben: string;
     };
   };
 
@@ -54,6 +54,53 @@ export interface Type {
       svg: string;
       alt: string;
     };
+  };
+
+  cca2: string;
+
+  coatOfArms: {
+    png: string;
+    svg: string;
+  };
+
+  subregion: string;
+
+  borders: string[];
+
+  landlocked: boolean;
+
+  coordinates: {
+    lat: number;
+    lng: number;
+  };
+
+  timezones: string[];
+
+  populationDensity: number;
+
+  demonyms: {
+    eng: {
+      male: string;
+      female: string;
+    };
+  };
+
+  independent: boolean;
+
+  status: string;
+
+  unMember: boolean;
+
+  idd: {
+    root: string;
+    suffixes: string[];
+  };
+
+  tld: string[];
+
+  map: {
+    googleMaps: string;
+    openStreetMaps: string;
   };
 };
 
