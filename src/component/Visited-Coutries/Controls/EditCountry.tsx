@@ -121,7 +121,10 @@ const handleTrushedData = (country : Country ) => {
         </button>
       </div>
       <div className="overflow-scroll h-100">
-        {!pined &&
+        {!pined && visitedCountries.length === 0? <div className="flex justify-center items-center h-full text-xl text-gray-600">
+          <p>No Country Available</p>
+        </div>  : ""} 
+        {!pined  &&
           visitedCountries.map((country) => (
             <RemoveCountry
               key={country.ccn3.ccn3}
@@ -131,7 +134,9 @@ const handleTrushedData = (country : Country ) => {
               pinedData={pinedData}
               handlePined={handlePined}
             />
-          ))}
+          ))
+        }
+          
         { pined && pinedData.length === 0 ? <div className="flex justify-center items-center h-full text-xl text-gray-600">
           <p>No pined Available</p>
         </div>  : ""}
