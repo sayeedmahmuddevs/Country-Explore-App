@@ -66,10 +66,7 @@ const handleTrush = (code : number) => {
     setNavClick(nav);
   };
 
-  // Visited Country
   
-
-  // data
  
 
 
