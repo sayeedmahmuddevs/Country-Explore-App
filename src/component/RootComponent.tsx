@@ -21,31 +21,40 @@ function RootComponent({ data }: RootComponentProps) {
   // fetching Data
   const datas = use(data);
 
-  // data
-  const [allCountry, setAllCountry] = useState<Country[]>(
-    datas.map((country) => ({ ...country, isVisited: false })),
-  );
+  
+  const [visited, setVisited] = useState<Country[]>(() => {
+  const saved = localStorage.getItem("Card");
 
-  const handleVisited = (name: number) => {
-    setAllCountry((prev) =>
-      prev.map((country) =>
-        Number(country.ccn3.ccn3) === name
-          ? { ...country, isVisited: true }
-          : country,
-      ),
-    );
+  return saved ? JSON.parse(saved) : [];
+});
+
+
+  const handleVisited = (country: Country) => {
+    setVisited((pre) => {
+      if (pre.some((cnt) => cnt.ccn3.ccn3 === country.ccn3.ccn3)) {
+        return pre;
+      }
+      const newCountry: Country = {
+        ...country, isVisited : true
+      }
+      localStorage.setItem("Card", JSON.stringify([...pre, newCountry]))
+      return [...pre, newCountry];
+    });
   };
 
 //  card will remove when allData will be update
 const handleTrush = (code : number) => {
-  setAllCountry((prev) =>
-      prev.map((country) =>
-        Number(country.ccn3.ccn3) === code
-          ? { ...country, isVisited: false }
-          : country,
-      ),
-    );
+  setVisited((prev) =>{
+      const update = prev.filter((country) =>
+        Number(country.ccn3.ccn3) !== code
+      );
+      localStorage.setItem("Card", JSON.stringify(update))
+      return update
+});
 }
+
+ const allCountry : Country[] = datas.map((country) => ({ ...country, 
+    isVisited: visited.some((item )=> Number(item.ccn3.ccn3) === Number(country.ccn3.ccn3)) }));
 
   const [searchCountry, setSearchCountry] = useState<string>("");
   
@@ -58,16 +67,10 @@ const handleTrush = (code : number) => {
   };
 
   // Visited Country
-  const [visited, setVisited] = useState<Country[]>([]);
+  
 
-  const handleArrayVisited = (country: Country) => {
-    setVisited((pre) => {
-      if (pre.some((cnt) => cnt.flags.flags.png === country.flags.flags.png)) {
-        return pre;
-      }
-      return [...pre, country];
-    });
-  };
+  // data
+ 
 
 
   return (
@@ -82,7 +85,6 @@ const handleTrush = (code : number) => {
           setSearchCountry={setSearchCountry}
           searchCountry={searchCountry}
           handleVisited={handleVisited}
-          handleArrayVisited={handleArrayVisited}
           visited = {visited}
         />
       )}
@@ -93,7 +95,6 @@ const handleTrush = (code : number) => {
           setSearchCountry={setSearchCountry}
           countries={allCountry}
           handleVisited={handleVisited}
-          handleArrayVisited={handleArrayVisited}
         />
       )}
 

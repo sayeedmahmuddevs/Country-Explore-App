@@ -16,8 +16,7 @@ interface HomeMainProps {
   navClick: NavClick;
   searchCountry: string;
   setSearchCountry: (value: string) => void;
-  handleVisited: (name: number) => void;
-  handleArrayVisited: (country: Country) => void;
+  handleVisited: (country: Country) => void;
 }
 
 export default function HomeMain({
@@ -28,7 +27,6 @@ export default function HomeMain({
   searchCountry,
   setSearchCountry,
   handleVisited,
-  handleArrayVisited,
 }: HomeMainProps) {
   return (
     <div className="container mx-auto">
@@ -39,7 +37,6 @@ export default function HomeMain({
         navClick={navClick}
         setNavClick={setNavClick}
         handleVisited={handleVisited}
-        handleArrayVisited={handleArrayVisited}
       ></HeroSection>
 
       <ExploreCount data={allCountries} visited = {visited}></ExploreCount>
@@ -51,7 +48,6 @@ export default function HomeMain({
         searchCountry={searchCountry}
         setSearchCountry={setSearchCountry}
         handleVisited={handleVisited}
-        handleArrayVisited={handleArrayVisited}
       ></RenderCard>
     </div>
   );

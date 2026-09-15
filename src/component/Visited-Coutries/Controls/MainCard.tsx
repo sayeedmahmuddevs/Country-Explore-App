@@ -17,7 +17,7 @@ interface showVisitedProps{
 export default function MainCard ({handleShowAllVisited, visitedData, handleTrush, setVisited} : showVisitedProps) {
 
   const [editVisited, setEditVisited] = useState(false)
-  const handlEditVisited = (value:boolean) => {
+  const handleEditVisited = (value:boolean) => {
       setEditVisited(value)
   }
 
@@ -43,7 +43,7 @@ export default function MainCard ({handleShowAllVisited, visitedData, handleTrus
             <div className="w-full">
             
                 <FlagsBox
-                editVisited = {editVisited} handleEditVisited={handlEditVisited} 
+                editVisited = {editVisited} handleEditVisited={handleEditVisited} 
                 visitedData = {visitedData} handleTrush = {handleTrush} setVisited = {setVisited}
                 flagsShow = {flagsShow} handleFlagsShow = {handlFlagsShow}
                 

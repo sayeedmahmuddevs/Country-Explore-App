@@ -6,14 +6,12 @@ type Country = Type & {
 
 interface CountryType {
   country: Country;
-  handleVisited: (name: number) => void;
-  handleArrayVisited: (country: Country) => void;
+  handleVisited: (country: Country) => void;
 }
 
 function Countries({
   country,
   handleVisited,
-  handleArrayVisited,
 }: CountryType) {
   const buttonUi: { [key: string]: string } = {
     Asia: "bg-pink-100 text-pink-500",
@@ -32,8 +30,8 @@ function Countries({
 
   const handleCountry = () => {
     if (!country.isVisited) {
-      handleVisited(Number(country.ccn3.ccn3));
-      handleArrayVisited(country);
+      handleVisited(country);
+      
     }
   };
 

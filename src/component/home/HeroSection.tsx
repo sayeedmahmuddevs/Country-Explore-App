@@ -12,8 +12,7 @@ interface HerosectionProps {
   setSearchCountry: (value: string) => void;
   setNavClick: (value: NavClick) => void;
   navClick: NavClick;
-  handleVisited: (name: number) => void;
-  handleArrayVisited: (country: Country) => void;
+  handleVisited: (country: Country) => void;
 }
 export default function HeroSection({
   data,
@@ -22,7 +21,6 @@ export default function HeroSection({
   navClick,
   setNavClick,
   handleVisited,
-  handleArrayVisited,
 }: HerosectionProps) {
   return (
     <div className="container mx-auto px-11">
@@ -76,7 +74,6 @@ export default function HeroSection({
                   searchCountry={searchCountry}
                   setSearchCountry={setSearchCountry}
                   handleVisited={handleVisited}
-                  handleArrayVisited={handleArrayVisited}
                 ></CountriesMain>
               )}
             </button>

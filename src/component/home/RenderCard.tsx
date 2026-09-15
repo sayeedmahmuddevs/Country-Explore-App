@@ -15,8 +15,7 @@ interface RenderCardProps {
   navClick: NavClick;
   searchCountry: string;
   setSearchCountry: (value: string) => void;
-  handleVisited: (name: number) => void;
-  handleArrayVisited: (country: Country) => void;
+  handleVisited: (country: Country) => void;
 }
 
 function RenderCard({
@@ -26,7 +25,6 @@ function RenderCard({
   searchCountry,
   setSearchCountry,
   handleVisited,
-  handleArrayVisited,
 }: RenderCardProps) {
   return (
     <section className="mt-8 container mx-auto px-4 sm:px-10 lg:px-20">
@@ -48,7 +46,6 @@ function RenderCard({
                 searchCountry={searchCountry}
                 setSearchCountry={setSearchCountry}
                 handleVisited={handleVisited}
-                handleArrayVisited={handleArrayVisited}
               />
             )}
           </button>

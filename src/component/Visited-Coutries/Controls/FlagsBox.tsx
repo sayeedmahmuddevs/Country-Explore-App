@@ -26,7 +26,6 @@ function FlagsBox({
   handleEditVisited,
   flagsShow,
   handleFlagsShow,
-  handleTrush,
   setVisited,
 }: VisitedControlProps) {
   
@@ -64,7 +63,7 @@ function FlagsBox({
 
 
 {/* edit flags Dashboard */}
-      {editVisited && <EditCountry visitedData = {visitedData} handleTrush = {handleTrush} setVisited = {setVisited}></EditCountry>}
+      {editVisited && <EditCountry visitedData = {visitedData}  setVisited = {setVisited}></EditCountry>}
       
 
 {/* fishined flagsdashboard */}

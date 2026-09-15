@@ -16,6 +16,7 @@ function MainDash({countriesData, visitedData}:MainDashProps) {
     <div className="container px-2 mx-auto bg-blue-50">
       <HeroMain countriesData = {countriesData} visitedData = {visitedData} />
       <MainOverView countriesData = {countriesData}/>
+      
     </div>
   )
 }

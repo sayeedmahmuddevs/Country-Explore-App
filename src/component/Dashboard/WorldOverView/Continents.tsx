@@ -76,8 +76,9 @@ function Continents({ countriesData }: MainDashProps) {
       100
     ).toFixed(1);
   };
+  
   return (
-    <div className="bg-white rounded-2xl p-1">
+    <div className="w-full bg-white shadow-sm rounded-2xl p-1">
       <div className="flex justify-between items-center col-span-1 pt-2 pb-6 ">
         <div className="flex gap-2 items-center">
           <span className="text-3xl">
@@ -96,7 +97,7 @@ function Continents({ countriesData }: MainDashProps) {
 
       {Allcontinents.map((continents) => (
         <div className="grid grid-cols-2 gap-3 outline outline-gray-100 rounded-xl p-2 mb-2">
-          <div className="flex w-40 items-center justify-between">
+          <div className="flex w-full items-center justify-between">
             <div className="flex gap-2 items-center">
               <div
                 className={`w-9 h-9 rounded-full flex justify-center items-c enter p-[4px] ${buttonUi[continents].color}`}

@@ -13,8 +13,7 @@ interface CountriesMainProps {
   countries: Country[];
   searchCountry: string;
   setSearchCountry: (value: string) => void;
-  handleVisited: (name: number) => void;
-  handleArrayVisited: (country: Country) => void;
+  handleVisited: (country: Country) => void;
 }
 
 type continentsfilter =
@@ -40,7 +39,6 @@ export default function CountriesMain({
   searchCountry,
   setSearchCountry,
   handleVisited,
-  handleArrayVisited,
 }: CountriesMainProps) {
   // continentsfilter selection
   const [continentFilter, setSelectedFilter] =
@@ -114,6 +112,15 @@ export default function CountriesMain({
     );
   }
 
+  const perpage = 8;
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalCountries = Math.ceil(countries.length / perpage);
+  const start = (currentPage - 1) * perpage;
+  const end = start + perpage;
+  const showCountries = peopleFilter.slice(start, end);
+
+  const [allCountries, setAllcountries] = useState(false);
+
   return (
     <div className="container mx-auto max-w-340">
       <FilteringCountries
@@ -128,16 +135,58 @@ export default function CountriesMain({
         setSorted={setSorted}
       />
       <section>
-        <div className={`${peopleFilter.length === 0 ? "" : "grid"} grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 text-center`}>
-          {peopleFilter.length === 0 ? "No country available": ""}
-          {peopleFilter.map((country) => (
-            <Countries
-              key={country.ccn3.ccn3}
-              country={country}
-              handleVisited={handleVisited}
-              handleArrayVisited={handleArrayVisited}
-            />
-          ))}
+        <div className="flex justify-between items-center">
+          <h2 className="font-semibold">Countries</h2>
+          <button
+            className="font-semibold underline underline-offset-1 cursor-pointer"
+            onClick={() => setAllcountries(!allCountries)}
+          >
+            {allCountries ? "Less all" : "See all"}
+          </button>
+        </div>
+
+        {!allCountries && (
+          <div>
+            <div
+              className={`${peopleFilter.length === 0 ? "" : "grid"} grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 text-center`}
+            >
+              {showCountries.map((country) => (
+                <Countries
+                  key={country.ccn3.ccn3}
+                  country={country}
+                  handleVisited={handleVisited}
+                />
+              ))}
+            </div>
+
+            <div className="flex gap-2">
+              <span>Page: </span>
+              {Array.from({ length: totalCountries }, (_, index) => (
+                <button
+                  onClick={() => setCurrentPage(index + 1)}
+                  key={index}
+                  className={`${currentPage === index + 1 ? "bg-gray-300" : ""} outline w-6`}
+                >
+                  {index + 1}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <div
+          className={`${peopleFilter.length === 0 ? "" : "grid"} grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 text-center ${allCountries ? "h-150 overflow-y-scroll" : ""}`}
+        >
+          {peopleFilter.length === 0 ? "No country available" : ""}
+
+          {allCountries &&
+            peopleFilter.map((country) => (
+              <Countries
+                key={country.ccn3.ccn3}
+                country={country}
+                handleVisited={handleVisited}
+              />
+            ))}
         </div>
       </section>
     </div>
