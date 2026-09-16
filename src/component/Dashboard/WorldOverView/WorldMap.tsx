@@ -49,8 +49,8 @@ function WorldMap({countriesData}:WorldMapProps) {
         <span className="absolute right-80 bottom-5 w-20 text-[10px] p-1 outline-2 bg-gray-50 transform text-center  text-gray-700  outline-gray-600 inline-block rounded-2xl">Antarctica {continents("Antarctica")}</span>
       </div>
       <div className="flex justify-between">
-            {conts.map(cnt =>
-        <div className="flex gap-[5px] items-center ">
+            {conts.map((cnt, index) =>
+        <div key={index} className="flex gap-[5px] items-center ">
         <span className={`size-2 ${cnt.bg} rounded-full inline-block`}></span>
         <p className="text-[8px] font-semibold">{cnt.cont}</p>
         <p className="text-[8px]">{continents(cnt.cont)}</p>

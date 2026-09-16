@@ -57,7 +57,7 @@ export default function HeroProgressBar({ data, visited }: ExploreCountProps) {
             <div className="ml-5 rounded-full p-1 bg-green-100 size-13 flex justify-center items-center text-9xl text-green-500"><IoPeopleCircleOutline/></div>
             <h5 className="font-bold flex justify-between text-md">Continents</h5>
             <h5 className="font-semibold flex justify-between text-3xl ml-5">{continents.length}</h5>
-            <h5 className="font-semibold flex gap-1 text-sm">{continents.slice(0,2).map(c => <span>{c},</span>)}...</h5>
+            <h5 className="font-semibold flex gap-1 text-sm">{continents.slice(0,2).map((c, index) => <span key={index}>{c},</span>)}...</h5>
           </div>
 
           {/* visited */}

@@ -95,8 +95,8 @@ function Continents({ countriesData }: MainDashProps) {
         </div>
       </div>
 
-      {Allcontinents.map((continents) => (
-        <div className="grid grid-cols-2 gap-3 outline outline-gray-100 rounded-xl p-2 mb-2">
+      {Allcontinents.map((continents, index) => (
+        <div key={index} className="grid grid-cols-2 gap-3 outline outline-gray-100 rounded-xl p-2 mb-2">
           <div className="flex w-full items-center justify-between">
             <div className="flex gap-2 items-center">
               <div

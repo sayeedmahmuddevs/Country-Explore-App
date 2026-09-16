@@ -1,4 +1,4 @@
-import { FaRegHeart, FaArrowRight } from "react-icons/fa6";
+import { FaRegHeart } from "react-icons/fa6";
 import type { Type } from "../../Type";
 type Country = Type & {
   isVisited: boolean;
