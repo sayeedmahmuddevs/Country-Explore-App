@@ -1,6 +1,7 @@
 import Largest from "./Largest";
 import type { Type } from "../../../Type";
 import { useState } from "react";
+import InterestingFact from "./InterestingFact";
 
 type Country = Type & {
   isVisited: boolean;
@@ -26,6 +27,8 @@ function TopMain({ countriesData }: TopMainProps) {
           largestShow={largestShow}
           handleShowLargest={handleShowLargest}
         />
+
+        <InterestingFact countriesData={countriesData} />
       </div>
 
       {/* mainBar end */}
@@ -34,7 +37,7 @@ function TopMain({ countriesData }: TopMainProps) {
       {/* Largest countries show/hide */}
       {largestShow && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm overflow-y-scroll py-10 pr-10 ">
-          <div className="w-200 overflow-y-scroll h-full p-10 bg-white rounded-2xl">
+          <div className="w-200 overflow-y-scroll h-150 p-10 bg-white rounded-2xl">
             <Largest
               countriesData={countriesData}
               largestShow={largestShow}
