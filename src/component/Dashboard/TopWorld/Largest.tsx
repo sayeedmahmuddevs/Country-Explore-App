@@ -7,25 +7,31 @@ type Country = Type & {
 
 interface LargestProps {
   countriesData: Country[];
+  largestShow: boolean;
+  handleShowLargest : (value : boolean) => void
 }
 
-function Largest({ countriesData }: LargestProps) {
+function Largest({ countriesData, largestShow, handleShowLargest }: LargestProps) {
   const countries = [...countriesData];
   countries.sort((a, b) => b.area.area - a.area.area);
   return (
     <div className="w-full bg-white shadow-sm rounded-2xl p-2">
       {/* topBAr */}
+
+
       <div className="flex justify-between items-center col-span-1 pt-2 pb-6 ">
         <div className="flex gap-2 items-center">
           <span className="text-3xl">
             <BiWorld />
           </span>
-          <p className="font-semibold">Top 5 largest country </p>
+          <p className="font-semibold">Top {largestShow? "" : "5"} largest country </p>
         </div>
 
-        <button className="font-semibold text-green-500 underline cursor-pointer">
+        <button 
+          onClick={() => handleShowLargest(!largestShow)}
+        className="font-semibold text-green-500 underline cursor-pointer">
           
-          View All
+          {largestShow? "close": "View All"} 
         </button>
       </div>
 
@@ -42,7 +48,8 @@ function Largest({ countriesData }: LargestProps) {
         </div>
       </div>
 
-      {countries.slice(0, 5).map((country, index) => (
+      
+      {countries.slice(0, largestShow? countriesData.length : 5).map((country, index) => (
         <div className="grid grid-cols-2 gap-4 mb-5 outline outline-gray-200 p-2 rounded-2xl">
           <div className="flex justify-between">
             <span>{index + 1}</span>
