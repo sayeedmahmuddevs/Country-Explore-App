@@ -89,11 +89,14 @@ export default function AddCard({
         </div>
 
         {/* Progress Bar */}
-        <div className="h-4 w-full overflow-hidden rounded-full bg-gray-100">
+        <div className="h-4 w-full flex items-center rounded-full bg-gray-100">
           <div
-            className="h-full rounded-full bg-linear-to-r from-green-400 to-emerald-500"
+            className="h-full rounded-l-lg bg-linear-to-r from-green-400 to-emerald-500"
             style={{ width: `${Percent}%` }}
           />
+          <div className="w-1.5 rounded-4xl h-6 bg-emerald-600 relative">
+            <div className="absolute -bottom-6 -left-3 font-semibold text-md">{Percent}%</div>
+          </div>
         </div>
 
         {/* Bottom Stats */}

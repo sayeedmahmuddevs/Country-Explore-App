@@ -40,13 +40,17 @@ function RemoveCountry({
 
           <div>
             <h2 className="font-bold">{country.name.common}</h2>
-            <span>✅ {country.isVisited ? "" : "visited"}</span>
+            <span>✅ {country.isVisited ? "visited" : ""}</span>
           </div>
         </div>
-
-        <button onClick={trushData} className="text-2xl hover:text-gray-400">
+      {(pinedData.some(cnt => cnt.ccn3.ccn3 === country.ccn3.ccn3)) ? "" : 
+      
+      <button onClick={trushData} className="text-2xl hover:text-gray-400">
           <MdDelete />
         </button>
+          
+      }
+        
       </div>
     </div>
   );

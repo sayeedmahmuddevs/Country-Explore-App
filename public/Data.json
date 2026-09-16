@@ -850,7 +850,6 @@
       "UTC-04:00",
       "UTC-03:00",
       "UTC-02:00",
-      "UTC",
       "UTC+01:00",
       "UTC+02:00"
     ],
@@ -1354,7 +1353,7 @@
       "lat": 14,
       "lng": -14
     },
-    "timezones": ["UTC"],
+    "timezones": [],
     "populationDensity": 96,
     "demonyms": {
       "eng": {
@@ -2332,7 +2331,7 @@
       "lat": 32,
       "lng": -5
     },
-    "timezones": ["UTC"],
+    "timezones": [],
     "populationDensity": 84,
     "demonyms": {
       "eng": {
@@ -2585,8 +2584,7 @@
       "lng": -8
     },
     "timezones": [
-      "UTC-01:00",
-      "UTC"
+      "UTC-01:00"
     ],
     "populationDensity": 112,
     "demonyms": {
@@ -3547,7 +3545,6 @@
       "lng": -4
     },
     "timezones": [
-      "UTC"
     ],
     "populationDensity": 16,
     "demonyms": {
@@ -4103,7 +4100,6 @@
       "lng": -7
     },
     "timezones": [
-      "UTC"
     ],
     "populationDensity": 38,
     "demonyms": {
@@ -6098,7 +6094,7 @@
     "borders": ["CIV", "GNB", "LBR", "MLI", "SEN", "SLE"],
     "landlocked": false,
     "coordinates": { "lat": 11, "lng": -10 },
-    "timezones": ["UTC"],
+    "timezones": [],
     "populationDensity": 53,
     "demonyms": {
       "eng": { "male": "Guinean", "female": "Guinean" }
@@ -6173,7 +6169,7 @@
     "borders": ["GBR"],
     "landlocked": false,
     "coordinates": { "lat": 53, "lng": -8 },
-    "timezones": ["UTC"],
+    "timezones": [],
     "populationDensity": 78,
     "demonyms": {
       "eng": { "male": "Irish", "female": "Irish" }
@@ -8663,7 +8659,7 @@
       "lat": 8,
       "lng": -5
     },
-    "timezones": ["UTC"],
+    "timezones": [],
     "populationDensity": 85,
     "demonyms": {
       "eng": {
@@ -9756,7 +9752,7 @@
       "lat": 13.46666666,
       "lng": -16.56666666
     },
-    "timezones": ["UTC"],
+    "timezones": [],
     "populationDensity": 244,
     "demonyms": {
       "eng": {
@@ -20094,7 +20090,7 @@
     "borders": ["GIN", "CIV", "SLE"],
     "landlocked": false,
     "coordinates": [6.5, -9.5],
-    "timezones": ["UTC"],
+    "timezones": [],
     "populationDensity": 45.0,
     "demonyms": { "eng": { "male": "Liberian", "female": "Liberian" } },
     "independent": true,

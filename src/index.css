@@ -1,1 +1,29 @@
 @import "tailwindcss";
+
+
+
+@keyframes slider{
+    0%{
+        background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQC-M3lP31oOsZ9-_CZ3fpZ7-iIuK7u7cuXdtimE12LTA&s=10");
+    }
+    33%{
+        background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJDk7K8Ba9AEfqm0lJr6-5gOUyupe56sQwZgvY0uzOaXRoUf6mfk0KTCCw&s=10");
+
+    }
+    66%{
+        background-image: url("https://res.klook.com/image/upload/fl_lossy.progressive,q_60/Mobile/City/swox6wjsl5ndvkv5jvum.jpg");
+    }
+    100%{
+        background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDSWZsOHIDIUeRibsmpuKkbbTi1GgRyCzjYmmIDIG9og&s");
+    }
+
+    
+}
+
+.slider{
+    animation: slider 30s infinite;
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position: center;
+    
+}

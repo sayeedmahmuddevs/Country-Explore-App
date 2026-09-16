@@ -24,7 +24,7 @@ export default function HeroSection({
 }: HerosectionProps) {
   return (
     <div className="container mx-auto px-11">
-      <section className="relative mt-5 overflow-hidden rounded-3xl bg-linear-to-r from-green-600 to-emerald-500 px-6 py-14 text-white shadow-lg">
+      <section className="slider relative mt-5 overflow-hidden rounded-3xl px-6 py-14 text-white shadow-lg">
         {/* Background decoration */}
         <div className="absolute -right-20 -top-20 h-60 w-60 rounded-full bg-white/10" />
         <div className="absolute -bottom-24 -left-10 h-60 w-60 rounded-full bg-white/10" />

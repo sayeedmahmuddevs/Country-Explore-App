@@ -22,7 +22,13 @@ function EditCountry({
   const [trushSort, setTrushSort] = useState<SortType>("all");
 
   // Pin state
-  const [pinedData, setPinedData] = useState<Country[]>([]);
+  const [pinedData, setPinedData] = useState<Country[]>(
+  ()=>{
+    const saved = localStorage.getItem("PinCard")
+
+    return saved? JSON.parse(saved) : []
+  }
+  );
 
   // Pin / Unpin
   const handlePined = (country: Country) => {
@@ -42,7 +48,7 @@ function EditCountry({
       if (prev.length >= 3) {
         return prev;
       }
-
+      localStorage.setItem('PinCard' , JSON.stringify([...prev, country]))
       return [...prev, country];
     });
   };
@@ -53,7 +59,7 @@ function EditCountry({
       (cnt) => cnt.ccn3.ccn3 === country.ccn3.ccn3
     );
 
-    // Pinned হলে delete হবে না
+    // Pinned is not delete
     if (isPinned) {
       return;
     }
@@ -156,7 +162,7 @@ function EditCountry({
       </div>
 
       {/* Countries */}
-      <div className="overflow-scroll h-100">
+      <div className="overflow-y-auto h-100">
         {/* Normal visited countries */}
         {!pined && visitedCountries.length === 0 && (
           <div className="flex justify-center items-center h-full text-xl text-gray-600">
