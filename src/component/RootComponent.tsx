@@ -66,13 +66,35 @@ const handleTrush = (code : number) => {
     setNavClick(nav);
   };
 
+  const [fav, setFav] = useState<Country[]>(
+    () => {
+      const saved = localStorage.getItem("Fav")
+      return saved? JSON.parse(saved) : []
+
+    }
+      
+
+  )
+
+  const handleFav = (country:Country )=>{
+    setFav( (prev) => {
+      localStorage.setItem("Fav", JSON.stringify([...prev, country]))
+      if(prev.some((cnt) => cnt.ccn3.ccn3 === country.ccn3.ccn3)) return prev.filter(cnt => cnt.ccn3.ccn3 !==country.ccn3.ccn3 )
+      return [...prev, country]
+
+  })
+
+
+  }
+  console.log(fav)
+
   
  
 
 
   return (
     <section>
-      <Nav setNavClick={handleNavClick} navClick={navClick} />
+      <Nav setNavClick={handleNavClick} navClick={navClick} fav = {fav} />
 
       {navClick === "home" && (
         <HomeMain
@@ -92,6 +114,8 @@ const handleTrush = (code : number) => {
           setSearchCountry={setSearchCountry}
           countries={allCountry}
           handleVisited={handleVisited}
+          handleFav = {handleFav}
+          fav = {fav}
         />
       )}
 

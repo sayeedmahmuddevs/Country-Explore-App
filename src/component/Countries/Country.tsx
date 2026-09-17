@@ -1,4 +1,8 @@
+import { FaRegHeart } from "react-icons/fa6";
+
 import type { Type } from "../../Type";
+import { useState } from "react";
+
 
 type Country = Type & {
   isVisited: boolean;
@@ -7,11 +11,15 @@ type Country = Type & {
 interface CountryType {
   country: Country;
   handleVisited: (country: Country) => void;
+  handleFav : (country: Country) => void;
+  fav: Country[]
 }
 
 function Countries({
   country,
   handleVisited,
+  handleFav,
+  fav
 }: CountryType) {
   const buttonUi: { [key: string]: string } = {
     Asia: "bg-pink-100 text-pink-500",
@@ -34,6 +42,16 @@ function Countries({
       
     }
   };
+  
+
+
+
+  const Fav = () => {
+    handleFav(country)
+
+  }
+  const favCol = fav.some((cnt) => cnt.ccn3.ccn3 === country.ccn3.ccn3)
+
 
   return (
     <div className="group rounded-2xl flex-col justify-between border border-gray-100 bg-white p-5 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg">
@@ -44,6 +62,12 @@ function Countries({
             alt=""
             className="max-w-40 group-hover:scale-110 transition-transform duration-200 rounded-xl border"
           />
+
+          <div className={`${favCol? "text-red-500": ""}   hover:text-red-500 transform hover:scale-110 transition-transform duration-200`}
+          onClick={()=>Fav()}
+          >
+            <FaRegHeart/>
+          </div>
         </div>
 
         <h3 className="font-bold text-gray-800 text-xl mb-1">

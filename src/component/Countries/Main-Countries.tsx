@@ -14,6 +14,8 @@ interface CountriesMainProps {
   searchCountry: string;
   setSearchCountry: (value: string) => void;
   handleVisited: (country: Country) => void;
+  handleFav : (country: Country) => void;
+  fav: Country[]
 }
 
 type continentsfilter =
@@ -39,6 +41,8 @@ export default function CountriesMain({
   searchCountry,
   setSearchCountry,
   handleVisited,
+  handleFav,
+  fav
 }: CountriesMainProps) {
   // continentsfilter selection
   const [continentFilter, setSelectedFilter] =
@@ -121,6 +125,9 @@ export default function CountriesMain({
 
   const [allCountries, setAllcountries] = useState(false);
 
+  
+  
+
   return (
     <div className="container mx-auto max-w-340">
       <FilteringCountries
@@ -155,6 +162,8 @@ export default function CountriesMain({
                   key={country.ccn3.ccn3}
                   country={country}
                   handleVisited={handleVisited}
+                  handleFav = {handleFav}
+                  fav = {fav}
                 />
               ))}
             </div>
@@ -185,6 +194,8 @@ export default function CountriesMain({
                 key={country.ccn3.ccn3}
                 country={country}
                 handleVisited={handleVisited}
+                handleFav = {handleFav}
+                fav = {fav}
               />
             ))}
         </div>

@@ -1,11 +1,17 @@
+import type { Type } from "../Type";
+
 type NavClick = "home" | "countries" | "visited countries" | "dashboard"
 
+type Country = Type & {
+  isVisited: boolean;
+};
 interface NavProps {
   setNavClick: (value: NavClick) => void;
   navClick: NavClick;
+  fav : Country[]
 }
 
-function Nav({ setNavClick, navClick }: NavProps) {
+function Nav({ setNavClick, navClick, fav }: NavProps) {
 
     
   return (
@@ -69,11 +75,13 @@ function Nav({ setNavClick, navClick }: NavProps) {
             {/* Favorite */}
             <button
               type="button"
-              className="flex h-9 w-9 items-center justify-center rounded-full
+              className=" relative flex h-9 w-9 items-center justify-center rounded-full
                    bg-gray-50 text-lg transition
-                   hover:bg-red-50 hover:text-red-500"
+                   hover:bg-red-50 "
             >
-              ♡
+              <span className="text-5xl transform hover:scale-110 transition-transform duration-100 ">♡</span>
+              <span className="absolute top-1 -right-3 font-semibold bg-amber-600 size-6 rounded-full text-[15px] ">{fav.length}</span>
+
             </button>
 
             {/* Theme */}
