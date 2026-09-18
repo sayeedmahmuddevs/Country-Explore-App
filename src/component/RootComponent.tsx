@@ -102,7 +102,7 @@ const handleTrush = (code : number) => {
   return (
     <section className="relative">
       <Nav setNavClick={handleNavClick} navClick={navClick} fav = {fav} handleFavShow = {handleFavShow} favShow = {favShow} />
-     {favShow && <MainFav fav = {fav}  /> } 
+     {favShow && <MainFav fav = {fav} handleFav = {handleFav}  /> } 
 
       {navClick === "home" && (
         <HomeMain

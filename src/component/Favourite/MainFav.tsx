@@ -8,11 +8,12 @@ type Country = Type & {
 
 interface MainFavProps {
   fav: Country[];
+  handleFav : (country : Country) => void
   
 
 }
 
-function MainFav({ fav }: MainFavProps) {
+function MainFav({ fav, handleFav }: MainFavProps) {
   return (
     <div className="fixed top-15 right-4 sm:right-6 md:right-10 z-50 w-[calc(100%-2rem)] max-w-[600px] bg-white outline outline-gray-400 rounded-xl p-2">
       <div className="w-full flex gap-5">
@@ -27,7 +28,7 @@ function MainFav({ fav }: MainFavProps) {
 
       <div className="h-100 overflow-y-scroll p-2 grid grid-cols-2 gap-3">
         {
-          fav.map((cnt) => <CountryFav key={cnt.ccn3.ccn3} country ={cnt}/>)
+          fav.map((cnt) => <CountryFav key={cnt.ccn3.ccn3} country ={cnt} fav = {fav} handleFav = {handleFav}/>)
         }
       
 

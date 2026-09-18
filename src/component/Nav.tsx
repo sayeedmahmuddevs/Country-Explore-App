@@ -82,7 +82,7 @@ function Nav({ setNavClick, navClick, fav, handleFavShow, favShow }: NavProps) {
                    bg-gray-50 text-lg transition
                    hover:bg-red-50 "
             >
-              <span className={`text-5xl transform hover:scale-110 transition-transform duration-100 ${favShow? "text-red-500" : ""}`}>♡</span>
+              <span className={`text-5xl transform hover:scale-110 transition-transform duration-100 hover:text-red-500 ${favShow? "text-red-500" : ""}`}>♡</span>
               <span className="absolute top-1 -right-3 font-semibold bg-amber-600 size-6 rounded-full text-[15px] ">{fav.length}</span>
 
             </button>
