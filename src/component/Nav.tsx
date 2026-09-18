@@ -8,10 +8,12 @@ type Country = Type & {
 interface NavProps {
   setNavClick: (value: NavClick) => void;
   navClick: NavClick;
-  fav : Country[]
+  fav : Country[];
+  handleFavShow : () => void;
+  favShow: boolean
 }
 
-function Nav({ setNavClick, navClick, fav }: NavProps) {
+function Nav({ setNavClick, navClick, fav, handleFavShow, favShow }: NavProps) {
 
     
   return (
@@ -74,12 +76,13 @@ function Nav({ setNavClick, navClick, fav }: NavProps) {
           <div className="flex items-center gap-3">
             {/* Favorite */}
             <button
+              onClick={handleFavShow}
               type="button"
               className=" relative flex h-9 w-9 items-center justify-center rounded-full
                    bg-gray-50 text-lg transition
                    hover:bg-red-50 "
             >
-              <span className="text-5xl transform hover:scale-110 transition-transform duration-100 ">♡</span>
+              <span className={`text-5xl transform hover:scale-110 transition-transform duration-100 ${favShow? "text-red-500" : ""}`}>♡</span>
               <span className="absolute top-1 -right-3 font-semibold bg-amber-600 size-6 rounded-full text-[15px] ">{fav.length}</span>
 
             </button>

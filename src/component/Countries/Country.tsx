@@ -1,7 +1,7 @@
 import { FaRegHeart } from "react-icons/fa6";
 
 import type { Type } from "../../Type";
-import { useState } from "react";
+
 
 
 type Country = Type & {

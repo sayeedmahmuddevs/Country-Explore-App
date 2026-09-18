@@ -6,6 +6,7 @@ import Nav from "./Nav";
 import type { Type } from "../Type";
 import Footer from "./Footer/Footer";
 import MainDash from "./Dashboard/MainDash";
+import MainFav from "./Favourite/MainFav";
 
 interface RootComponentProps {
   data: Promise<Type[]>;
@@ -66,6 +67,8 @@ const handleTrush = (code : number) => {
     setNavClick(nav);
   };
 
+
+  // Favourite Box
   const [fav, setFav] = useState<Country[]>(
     () => {
       const saved = localStorage.getItem("Fav")
@@ -86,15 +89,20 @@ const handleTrush = (code : number) => {
 
 
   }
-  console.log(fav)
 
+  // favourite hide show
+  const [favShow, setFavShow] = useState(false)
+  const handleFavShow = () => {
+    setFavShow(!favShow)
+  }
   
  
 
 
   return (
-    <section>
-      <Nav setNavClick={handleNavClick} navClick={navClick} fav = {fav} />
+    <section className="relative">
+      <Nav setNavClick={handleNavClick} navClick={navClick} fav = {fav} handleFavShow = {handleFavShow} favShow = {favShow} />
+     {favShow && <MainFav fav = {fav}  /> } 
 
       {navClick === "home" && (
         <HomeMain
